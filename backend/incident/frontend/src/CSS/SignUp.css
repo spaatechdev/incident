@@ -1,0 +1,9 @@
+#row{
+   margin-right:0px;
+   margin-top: 18px; 
+}
+.Auth-form-container{
+   border-style:groove;
+   border-color: rgb(177, 177, 177);
+   padding: 1rem;
+}

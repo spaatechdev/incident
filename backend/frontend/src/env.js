@@ -1,18 +1,19 @@
-const SERVER_URL = "http://localhost:8000/";
+const SERVER_URL = "https://incident.spaatech.net/";
 
 const dynamic_urls = {
     SERVER_URL: SERVER_URL,
-    users: "users/",
-    incidentStatuses: "incidentStatuses/",
-    levels: "levels/",
-    spareParts: "spareParts/",
-    degrees: "degrees/",
-    skills: "skills/",
-    services: "services/",
-    products: "products/",
-    employees: "employees/",
-    customers: "customers/",
-    incidents: "incidents/"
+    users: "api/users/",
+    incidentStatuses: "api/incidentStatuses/",
+    levels: "api/levels/",
+    spareParts: "api/spareParts/",
+    degrees: "api/degrees/",
+    skills: "api/skills/",
+    services: "api/services/",
+    products: "api/products/",
+    employees: "api/employees/",
+    customers: "api/customers/",
+    incidents: "api/incidents/",
+    superuser: "api/superuser/"
 }
 
 export default dynamic_urls

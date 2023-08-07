@@ -1,0 +1,15 @@
+#logout{
+   padding-right: 3%;
+}
+h2{
+   padding-left: 350px;
+}
+#home{
+   color: white;
+}
+.sidebar {
+   display: flex;
+   height: 100vh;
+   float: left;
+   overflow: 'scroll initial';
+}

@@ -1,0 +1,10 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/rxvxi23k63vl/repositories/incident/backend"
+PassengerBaseURI "/"
+PassengerPython "/home/rxvxi23k63vl/virtualenv/repositories/incident/backend/3.8/bin/python"
+PassengerAppLogFile "/home/rxvxi23k63vl/logs/incident.txt"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END

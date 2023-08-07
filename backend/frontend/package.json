@@ -1,7 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "https://incident.spaatech.net",
-  "homepage": "https://incident.spaatech.net",
+  "proxy": "https://incident.spaatech.net/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

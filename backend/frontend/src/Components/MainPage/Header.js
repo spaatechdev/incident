@@ -8,7 +8,7 @@ const HeaderFunc = () => {
 	const [isAuth, setIsAuth] = useState(false);
 	useEffect(() => {
 		if (localStorage.getItem("access_token") === null) {
-			window.location.href = "/";
+			window.location.href = "/login";
 		}
 	}, []);
 	useEffect(() => {
@@ -34,7 +34,7 @@ const HeaderFunc = () => {
 				(result) => {
 					localStorage.clear();
 					axios.defaults.headers.common["Authorization"] = null;
-					window.location.href = "/";
+					window.location.href = "/login";
 				},
 				(error) => {
 					alert("Failed to logout");

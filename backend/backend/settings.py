@@ -103,8 +103,7 @@ DATABASES = {
     #     'PASSWORD': 'SPAATech@502',
     #     'HOST': 'localhost',
     #     'PORT': '3306',
-    # }
-
+    # },
     'default': {
         'ENGINE': 'mysql.connector.django',
         'NAME': 'incident',

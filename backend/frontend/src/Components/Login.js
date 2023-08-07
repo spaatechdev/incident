@@ -34,7 +34,7 @@ const Login = () => {
 
 			if (localStorage.getItem("access_token")) {
 			const response = await axios.get(
-				dynamic_urls.SERVER_URL+"superuser/" + username + "/",
+				dynamic_urls.SERVER_URL+"api/superuser/" + username + "/",
 				{
 					headers: {
 						"Content-Type": "application/json",

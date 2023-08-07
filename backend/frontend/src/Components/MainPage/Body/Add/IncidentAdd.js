@@ -25,7 +25,7 @@ const IncidentAddFunc = () => {
 	const [severity, setSeverity] = useState(0);
 	const [complexity, setComplexity] = useState(0);
 	const [level, setLevel] = useState({});
-	
+
 	useEffect(() => {
 		if (severity && complexity && levels.length) {
 			let avg_id = (severity + complexity) / 2;
@@ -42,7 +42,7 @@ const IncidentAddFunc = () => {
 		(async () => {
 			try {
 				const response = await axios.get(
-					dynamic_urls.SERVER_URL+dynamic_urls.employees,
+					dynamic_urls.SERVER_URL + dynamic_urls.employees,
 					{
 						headers: {
 							"Content-Type": "application/json",
@@ -62,7 +62,7 @@ const IncidentAddFunc = () => {
 		(async () => {
 			try {
 				const response = await axios.get(
-					dynamic_urls.SERVER_URL+dynamic_urls.customers,
+					dynamic_urls.SERVER_URL + dynamic_urls.customers,
 					{
 						headers: {
 							"Content-Type": "application/json",
@@ -82,7 +82,7 @@ const IncidentAddFunc = () => {
 		(async () => {
 			try {
 				const response = await axios.get(
-					dynamic_urls.SERVER_URL+dynamic_urls.degrees,
+					dynamic_urls.SERVER_URL + dynamic_urls.degrees,
 					{
 						headers: {
 							"Content-Type": "application/json",
@@ -102,7 +102,7 @@ const IncidentAddFunc = () => {
 		(async () => {
 			try {
 				const response = await axios.get(
-					dynamic_urls.SERVER_URL+dynamic_urls.levels,
+					dynamic_urls.SERVER_URL + dynamic_urls.levels,
 					{
 						headers: {
 							"Content-Type": "application/json",
@@ -121,7 +121,7 @@ const IncidentAddFunc = () => {
 		(async () => {
 			try {
 				const response = await axios.get(
-					dynamic_urls.SERVER_URL+dynamic_urls.products,
+					dynamic_urls.SERVER_URL + dynamic_urls.products,
 					{
 						headers: {
 							"Content-Type": "application/json",
@@ -145,7 +145,7 @@ const IncidentAddFunc = () => {
 		if (id < 10) return `${name} (CUST-100${id})`;
 		else return `${name} (CUST-10${id})`;
 	};
-	
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let JSONdata = {
@@ -155,10 +155,11 @@ const IncidentAddFunc = () => {
 			incidentRemark: e.target.incidentRemark.value,
 			severity: Number(e.target.severity.value),
 			complexity: Number(e.target.complexity.value),
+			productId: Number(e.target.product.value),
+			productPurchaseDate:e.target.productPurchaseDate.value
 		};
-		console.log(JSONdata);
 		axios
-			.post(dynamic_urls.SERVER_URL+dynamic_urls.incidents, JSONdata, {
+			.post(dynamic_urls.SERVER_URL + dynamic_urls.incidents, JSONdata, {
 				headers: {
 					Accept: "application/json",
 					"Content-Type": "application/json",
@@ -175,11 +176,11 @@ const IncidentAddFunc = () => {
 			);
 	};
 	const buttonStyle = {
-		lineHeight:"10px",
+		lineHeight: "10px",
 		paddingLeft: "4px",
 		paddingRight: "4px",
 		paddingTop: "2px",
-   }
+	}
 	return (
 		<div className="container">
 			<p></p>
@@ -198,9 +199,9 @@ const IncidentAddFunc = () => {
 					</Form.Group>
 					<Col sm={6}>
 						<Form.Group controlId="customer">
-							<Form.Label>Customer</Form.Label>	
-							<span> </span>					
-							<Button variant="success"  style={buttonStyle} href="/customers/add">
+							<Form.Label>Customer</Form.Label>
+							<span> </span>
+							<Button variant="success" style={buttonStyle} href="/customers/add">
 								+
 							</Button>
 							<select
@@ -238,7 +239,7 @@ const IncidentAddFunc = () => {
 									Select employee
 								</option>
 								{employees && Object.keys(level).length &&
-									employees.filter(x=>x["level"]["levelId"] === level["levelId"]).map((stu) => (
+									employees.filter(x => x["level"]["levelId"] === level["levelId"]).map((stu) => (
 										<option
 											value={stu.employeeId}
 											key={stu.employeeId}
@@ -252,7 +253,7 @@ const IncidentAddFunc = () => {
 							</select>
 						</Form.Group>
 						<Form.Group controlId="product">
-							<Form.Label>Product</Form.Label>	
+							<Form.Label>Product</Form.Label>
 							<select
 								className="form-select"
 								name="product"
@@ -323,14 +324,14 @@ const IncidentAddFunc = () => {
 							</select>
 						</Form.Group>
 						<Form.Group controlId="productPurchaseDate">
-                     <Form.Label>Product Purchase Date</Form.Label>
-                     <Form.Control
-                        type="date"
-                        name="modelNumber"
-                        required
-                        placeholder=""
-                  />
-                  </Form.Group>
+							<Form.Label>Product Purchase Date</Form.Label>
+							<Form.Control
+								type="date"
+								name="modelNumber"
+								required
+								placeholder=""
+							/>
+						</Form.Group>
 					</Col>
 				</Row>
 				<EstimatedDateTimeFunc

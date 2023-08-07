@@ -12,6 +12,7 @@ from .serializers import EmployeeSerializer, CustomerSerializer, IncidentSeriali
     ServiceSerializer
 import json
 from datetime import datetime, timedelta
+from django.utils.dateparse import parse_date
 from django.conf import settings
 from django.core.mail import send_mail
 # import pywhatkit
@@ -161,6 +162,7 @@ class IncidentView(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         try:
             data = json.loads(request.body)
+            print(data)
             employee = Employee.objects.get(employeeId=data['employeeId'])
             customer = Customer.objects.get(customerId=data['customerId'])
             product = Product.objects.get(productId=data['productId'])
@@ -193,7 +195,7 @@ class IncidentView(viewsets.ModelViewSet):
                 editHistory=[],
                 spareParts=[],
                 services=[],
-                productPurchaseDate=data['productPurchaseDate'],
+                productPurchaseDate=parse_date(data['productPurchaseDate']),
                 product=product
             )
 

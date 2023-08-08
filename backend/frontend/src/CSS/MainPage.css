@@ -12,10 +12,27 @@
 
 }
 
-
-
-#body{
-      padding-left: 0%;
-      padding-right: 0%;
+body {
+      padding:0;
       border-top: groove;
+      background-color: #efefef!important;
 }
+.body-mrgn {
+   padding: 4%;
+}
+.body-mrgn h2 {
+      padding-left: 0px;
+      color: #293e40;
+      font-weight: 600!important;
+}
+.body-mrgn h2::after {
+      content: "";
+      width: 120px;
+      height: 2px;
+      display: inline-block;
+      background: #293e40;
+      margin: 8px 10px;
+}
+.form-label {
+      margin-top: 1.5rem;
+  }

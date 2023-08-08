@@ -2,7 +2,10 @@
    padding-right: 3%;
 }
 h2{
-   padding-left: 350px;
+   padding-left: 30px;
+   font-weight: 400!important;
+   font-size: 1.6rem!important;
+   color:#f1f1f1;
 }
 #home{
    color: white;
@@ -12,4 +15,7 @@ h2{
    height: 100vh;
    float: left;
    overflow: 'scroll initial';
+}
+.header-bg  {
+   background-color:#293e40;
 }

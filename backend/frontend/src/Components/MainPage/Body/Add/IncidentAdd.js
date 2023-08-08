@@ -182,9 +182,8 @@ const IncidentAddFunc = () => {
 		paddingTop: "2px",
 	}
 	return (
-		<div className="container">
-			<p></p>
-			<h2 style={{ paddingLeft: 520 }}>Add Incident</h2>
+		<div className='body-mrgn'>
+			<h2>Add Incident</h2>
 			<Form onSubmit={handleSubmit}>
 				<Row>
 					<Form.Group controlId="incidentDescription">

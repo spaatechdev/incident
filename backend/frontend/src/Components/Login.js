@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import dynamic_urls from "../env";
+import HeaderFunc from "./MainPage/Header";
 
 import "../CSS/Login.css";
 // Define the Login function.
@@ -58,11 +59,11 @@ const Login = () => {
 	};
 	return (
 		<div>
-			<nav className="navbar navbar-dark bg-dark variant-dark">
+			{/* <nav className="navbar navbar-dark bg-dark variant-dark">
 				<a className="navbar-brand" href="/">
 					<h2>Incident Management System</h2>
 				</a>
-			</nav>
+			</nav> */}
 			<div className="row">
 				<div className="col-md-3 offset-md-4" id="card">
 					<div className="Auth-form-container">

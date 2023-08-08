@@ -5,7 +5,8 @@ import "../../../../CSS/Image.css";
 const ImageFunc = () => {
 	return (
 		<div>
-			<img src={incidentpic} />
+			DASHBOARD PAGE
+			{/* <img src={incidentpic} /> */}
 			{/* <CDBSidebar textColor="#fff" backgroundColor="#333">
 				<CDBSidebarHeader prefix={<CDBIcon icon="bars" size="lg" />}>
 					Contrast Multi Level

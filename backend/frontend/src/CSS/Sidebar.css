@@ -3,7 +3,7 @@
 	align-items: center;
 	padding: 0.25rem 0.5rem;
 	font-weight: 600;
-	color: rgba(0, 0, 0, 0.65);
+	color: rgba(0, 0, 0, 0.85);
 	background-color: transparent;
 	border: 0;
 }
@@ -16,10 +16,11 @@
 .btn-toggle::before {
 	width: 1.25em;
 	line-height: 0;
-	content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+	content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
 	transition: transform 0.35s ease;
 	transform-origin: 0.5em 50%;
 }
+
 
 .btn-toggle-nav a {
 	display: inline-flex;
@@ -30,15 +31,59 @@
 }
 
 main {
-	display: flex;
-	height: 88vh;
-	/* height: 100%; */
-	float: left;
-	overflow: "scroll initial";
-	border-right: solid black;
+	height: 100vh;
+	/* height: 100%; 
+	float: left;*/
+	background: #fff;
+	border-right: 1px solid #ccc;
 }
 
 .link{
 	color: black	;
 }
 
+.dropdown {
+	width: 220px;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+  }
+  .dropdown .form {
+	display: flex;
+  }
+  .dropdown .form input {
+	width: 200px;
+  }
+  .dropdown .form .button {
+	width: 50px;
+  }
+  .dropdown .form .button .fa-chevron-down {
+	transform: rotate(0deg);
+	transition: all 0.6s;
+  }
+  .dropdown .form .button .fa-chevron-down.active {
+	transform: rotate(180deg);
+  }
+  .dropdown .form input,
+  .dropdown .form button {
+	border: none;
+	padding: 20px 5px;
+	background-color: black;
+	color: #fff;
+	cursor: pointer;
+  }
+  .dropdown .form input:focus,
+  .dropdown .form button:focus {
+	outline: none;
+  }
+  .dropdown .dropdownList {
+	display: none;
+	background-color: #000;
+  }
+  .dropdown .dropdownList li {
+	padding: 20px;
+  }
+  .dropdown .dropdownList li:hover {
+	background-color: #333333;
+	transition: all 0.5s ease;
+  }

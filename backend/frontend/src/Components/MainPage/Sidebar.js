@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../CSS/Sidebar.css";
+import { FaAngleDown } from "react-icons/fa";
 import { Link } from 'react-router-dom'
 const SidebarFunc = () => {
 	const [isSuperuser, setIsSuperuser] = useState(false);
@@ -8,7 +9,11 @@ const SidebarFunc = () => {
 			setIsSuperuser(true);
 		}
 	}, []);
-
+	const toggle = (e) => {
+		e.preventDefault();
+		document.getElementsByClassName('dropdownList')[0].slideToggle(500);
+		document.getElementsByClassName('FaAngleDown')[0].toggleClass("active");
+	}
 	return (
 		<div>
 			<main>
@@ -247,6 +252,18 @@ const SidebarFunc = () => {
 							</li>}
 					</ul>
 				</div>
+				{/* <div className="dropdown">
+					<div className="form">
+						Add dropdown
+						<button class="button" 
+						onClick={(e) =>toggle(e)
+						}> <FaAngleDown className="FaAngleDown" /></button>
+					</div>
+					<ul className="dropdownList">
+						<li><a href="#">option one</a></li>
+						<li><a href="#">option two</a></li>
+					</ul>
+				</div> */}
 			</main>
 		</div>
 	);

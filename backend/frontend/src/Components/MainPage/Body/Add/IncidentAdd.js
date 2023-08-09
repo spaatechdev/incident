@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Col, Row, Form, Button } from "react-bootstrap";
+import { Col, Row, Form, Button, } from "react-bootstrap";
 import moment from "moment";
 import axios from "axios";
 import { format } from "date-fns";
@@ -202,7 +202,7 @@ const IncidentAddFunc = () => {
 							<span> </span>
 							<Button variant="success" style={buttonStyle} href="/customers/add">
 								+
-							</Button>
+							</Button>	
 							<select
 								className="form-select"
 								name="customer"

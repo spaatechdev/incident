@@ -9,11 +9,20 @@ const SidebarFunc = () => {
 			setIsSuperuser(true);
 		}
 	}, []);
-	const toggle = (e) => {
-		e.preventDefault();
-		document.getElementsByClassName('dropdownList')[0].slideToggle(500);
-		document.getElementsByClassName('FaAngleDown')[0].toggleClass("active");
+
+	const buttons=document.getElementsByTagName("button")
+	const [buttonClickedId,setButtonClickedId]=useState()
+	const clickFunc= (id)=>{
+		if(id!=buttonClickedId && buttonClickedId!=undefined)
+		{	
+			for(let i=0;i<buttons.length;i++){
+				if(buttons[i].id==buttonClickedId)
+					console.log(document.getElementById(buttonClickedId+"-collapse").setAttribute("class","collapse"))
+			}
+		}
+		setButtonClickedId(id)
 	}
+
 	return (
 		<div>
 			<main>
@@ -22,9 +31,11 @@ const SidebarFunc = () => {
 						<li className="mb-1">
 							<button
 								className="btn btn-toggle align-items-center rounded collapsed"
+								id="incidents"
 								data-bs-toggle="collapse"
 								data-bs-target="#incidents-collapse"
 								aria-expanded="false"
+								onClick={(e)=>{clickFunc(e.target.id)}}
 							>
 								Incidents
 							</button>
@@ -47,10 +58,12 @@ const SidebarFunc = () => {
 						{isSuperuser &&
 							<li className="mb-1">
 								<button
+									id="customers"
 									className="btn btn-toggle align-items-center rounded collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#customers-collapse"
 									aria-expanded="false"
+									onClick={(e)=>{clickFunc(e.target.id)}}
 								>
 									Customers
 								</button>
@@ -72,10 +85,12 @@ const SidebarFunc = () => {
 						{isSuperuser &&
 							<li className="mb-1">
 								<button
+									id="employees"
 									className="btn btn-toggle align-items-center rounded collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#employees-collapse"
 									aria-expanded="false"
+									onClick={(e)=>{clickFunc(e.target.id)}}
 								>
 									Employees
 								</button>
@@ -97,10 +112,12 @@ const SidebarFunc = () => {
 						{isSuperuser &&
 							<li className="mb-1">
 								<button
+								id="services"
 									className="btn btn-toggle align-items-center rounded collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#services-collapse"
 									aria-expanded="false"
+									onClick={(e)=>{clickFunc(e.target.id)}}
 								>
 									Services
 								</button>
@@ -122,10 +139,12 @@ const SidebarFunc = () => {
 						{isSuperuser &&
 							<li className="mb-1">
 								<button
+								id="products"
 									className="btn btn-toggle align-items-center rounded collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#products-collapse"
 									aria-expanded="false"
+									onClick={(e)=>{clickFunc(e.target.id)}}
 								>
 									Products
 								</button>
@@ -147,10 +166,12 @@ const SidebarFunc = () => {
 						{isSuperuser &&
 							<li className="mb-1">
 								<button
+								id="spareParts"
 									className="btn btn-toggle align-items-center rounded collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#spareParts-collapse"
 									aria-expanded="false"
+									onClick={(e)=>{clickFunc(e.target.id)}}
 								>
 									Spare Parts
 								</button>
@@ -172,10 +193,12 @@ const SidebarFunc = () => {
 						{isSuperuser &&
 							<li className="mb-1">
 								<button
+									id="skills"
 									className="btn btn-toggle align-items-center rounded collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#skills-collapse"
 									aria-expanded="false"
+									onClick={(e)=>{clickFunc(e.target.id)}}
 								>
 									Employee Skills
 								</button>
@@ -197,10 +220,12 @@ const SidebarFunc = () => {
 						{isSuperuser &&
 							<li className="mb-1">
 								<button
+									id="users"
 									className="btn btn-toggle align-items-center rounded collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#users-collapse"
 									aria-expanded="false"
+									onClick={(e)=>{clickFunc(e.target.id)}}
 								>
 									Users
 								</button>
@@ -217,10 +242,12 @@ const SidebarFunc = () => {
 						{isSuperuser &&
 							<li className="mb-1">
 								<button
+								    id="miscellaneous"
 									className="btn btn-toggle align-items-center rounded collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#miscellaneous-collapse"
 									aria-expanded="false"
+									onClick={(e)=>{clickFunc(e.target.id)}}
 								>
 									Miscellaneous
 								</button>

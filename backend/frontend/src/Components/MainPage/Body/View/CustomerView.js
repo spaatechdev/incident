@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
+import { FaFileAlt } from "react-icons/fa";
 import { RiDeleteBin5Line, RiFileZipFill } from "react-icons/ri";
 import { Button, ButtonToolbar } from "react-bootstrap";
 import "../../../../CSS/View.css";
@@ -71,11 +72,8 @@ const CustomerViewFunc = () => {
 	let EditModalClose = () => setEditModalShow(false);
 	// let customers = ServicesFunc(dynamic_urls.customers)
 	return (
-		<div
-			className="container-fluid side-container"
-			id="Container"
-			style={{ paddingRight: 0 }}
-		>
+		<div className="body-mrgn">
+			<h2><FaFileAlt className="fa-style" /> Customer Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
 				<h3 align="center">Customer Details</h3>
 				<div
@@ -124,6 +122,7 @@ const CustomerViewFunc = () => {
 											<span>&nbsp;&nbsp;&nbsp;</span>
 											<Button
 												className="mr-2"
+												variant="success"
 												onClick={(event) =>
 													handleUpdate(event, stu)
 												}

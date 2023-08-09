@@ -7,6 +7,7 @@ import "../../../../CSS/View.css";
 import ProductUpdateFunc from "../Update/ProductUpdate";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
+import { FaFileAlt } from "react-icons/fa";
 
 const ProductViewFunc = () => {
 	const [products, setProducts] = useState([]);
@@ -70,11 +71,8 @@ const ProductViewFunc = () => {
 
 	let EditModalClose = () => setEditModalShow(false);
 	return (
-		<div
-			className="container-fluid side-container"
-			id="Container"
-			style={{ paddingRight: 0 }}
-		>
+		<div className="body-mrgn">
+		<h2><FaFileAlt className="fa-style" /> Product Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
 				<h3 align="center">Product Details</h3>
 				<div
@@ -115,6 +113,7 @@ const ProductViewFunc = () => {
                            <span>&nbsp;&nbsp;&nbsp;</span>
                            <Button
                               className="mr-2"
+							  variant="success"
                               onClick={(event) =>handleUpdate(event, stu)}
                            >
                               <FaEdit />

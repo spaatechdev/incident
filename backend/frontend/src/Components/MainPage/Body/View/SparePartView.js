@@ -7,6 +7,7 @@ import "../../../../CSS/View.css";
 import SparePartUpdateFunc from "../Update/SparePartUpdate";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
+import { FaFileAlt } from "react-icons/fa";
 
 const SparePartViewFunc = () => {
 	const [spareParts, setSpareParts] = useState([]);
@@ -71,13 +72,9 @@ const SparePartViewFunc = () => {
 	let EditModalClose = () => setEditModalShow(false);
 	// let spareParts = ServicesFunc(dynamic_urls.spareParts)
 	return (
-		<div
-			className="container-fluid side-container"
-			id="Container"
-			style={{ paddingRight: 0 }}
-		>
+		<div className="body-mrgn">
+			<h2><FaFileAlt className="fa-style" /> Spare Part Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
-				<h3 align="center">Spare Part Details</h3>
 				<div
 					class="tableFixHead"
 					style={{ paddingLeft: 0, paddingRight: 0 }}
@@ -124,6 +121,7 @@ const SparePartViewFunc = () => {
 											<span>&nbsp;&nbsp;&nbsp;</span>
 											<Button
 												className="mr-2"
+												variant="success"
 												onClick={(event) =>
 													handleUpdate(event, stu)
 												}

@@ -26,11 +26,9 @@ const SkillAddFunc = () => {
 	};
 
 	return (
-		<div className="container">
-			<p></p>
-			<h2 style = {{paddingLeft : 520 }}>Add Skill</h2>
-			<br/>
-			<Form onSubmit={handleSubmit} >
+		<div className="body-mrgn">
+			<h2>Add Employee Skill</h2>
+		<Form onSubmit={handleSubmit} className="white-bg">
 					<Row>
 							<Col sm={6}>
 								<Form.Group controlId="name">
@@ -42,12 +40,14 @@ const SkillAddFunc = () => {
 										placeholder=""
 									/>
 								</Form.Group>
-								<br/>
+								</Col>
+								<Col sm={12}>
 								<Form.Group>
-									<p></p>
+									<div className="pt-4 submit">
 									<Button variant="primary" type="submit">
 										Submit
 									</Button>
+									</div>
 								</Form.Group>
 							</Col>
 					</Row>

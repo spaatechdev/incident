@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Modal, Col, Row, Form, Button } from "react-bootstrap";
 import { FormControl, FormGroup, FormLabel } from "react-bootstrap";
 import axios from "axios";
+import { FaUserAlt } from "react-icons/fa";
 import dynamic_urls from "../../../../env";
 
 const EmployeeAddFunc = () => {
@@ -83,11 +84,9 @@ const EmployeeAddFunc = () => {
 	};
 
 	return (
-		<div className="container">
-			<p></p>
-			<h2 style={{ paddingLeft: 520 }}>Add Employee</h2>
-			<br />
-			<Form onSubmit={handleSubmit}>
+		<div className="body-mrgn">
+			<h2><FaUserAlt className="fa-style" /> Add Employee</h2>
+			<Form onSubmit={handleSubmit} className="white-bg">
 				<Row>
 					<Col sm={6}>
 						<Form.Group controlId="name">
@@ -170,12 +169,14 @@ const EmployeeAddFunc = () => {
 								))}
 							</select>
 						</Form.Group>
-						<br />
+						</Col>
+						<Col sm={12}>
 						<Form.Group>
-							<p></p>
+							<div className="pt-4 submit">
 							<Button variant="primary" type="submit">
 								Submit
 							</Button>
+							</div>
 						</Form.Group>
 					</Col>
 				</Row>

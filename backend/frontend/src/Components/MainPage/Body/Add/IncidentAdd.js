@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Col, Row, Form, Button, } from "react-bootstrap";
+import { Col, Row, Form, Button } from "react-bootstrap";
 import moment from "moment";
 import axios from "axios";
 import { format } from "date-fns";
+import { FaTabletAlt } from "react-icons/fa";
 import EstimatedDateTimeFunc from "./EstimatedDateTime";
 import dynamic_urls from "../../../../env";
 
@@ -182,9 +183,9 @@ const IncidentAddFunc = () => {
 		paddingTop: "2px",
 	}
 	return (
-		<div className='body-mrgn'>
-			<h2>Add Incident</h2>
-			<Form onSubmit={handleSubmit}>
+		<div className="body-mrgn">
+			<h2><FaTabletAlt className="fa-style" /> Add Incident</h2>
+			<Form onSubmit={handleSubmit} className="white-bg">
 				<Row>
 					<Form.Group controlId="incidentDescription">
 						<Form.Label>Incident Description</Form.Label>
@@ -347,13 +348,13 @@ const IncidentAddFunc = () => {
 							placeholder=""
 						></textarea>
 					</Form.Group>
-					<Col sm={10}></Col>
-					<Col sm={2}>
+					<Col sm={12}>
 						<Form.Group>
-							<p></p>
+							<div className="pt-4 submit">
 							<Button variant="primary" type="submit">
 								Submit
 							</Button>
+							</div>
 						</Form.Group>
 					</Col>
 				</Row>

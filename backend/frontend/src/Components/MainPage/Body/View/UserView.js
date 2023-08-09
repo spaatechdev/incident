@@ -65,9 +65,10 @@ const UserViewFunc = ({ callback }) => {
 		setEditModalShow(false);
 	};
 	return (
-		<div className="container-fluid side-container" id="Container">
-			<div className="row side-row">
-				<h3 align="center">User Details</h3>
+		<div className="body-mrgn">
+			<h2>User Details</h2>
+			<div className="row">
+				
 				<p id="before-table"></p>
 				<Table
 					striped

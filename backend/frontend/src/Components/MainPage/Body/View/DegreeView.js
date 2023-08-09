@@ -71,11 +71,8 @@ const DegreeViewFunc = () => {
 	let EditModalClose = () => setEditModalShow(false);
 	// let degrees = ServicesFunc(dynamic_urls.degrees)
 	return (
-		<div
-			className="container-fluid side-container"
-			id="Container"
-			style={{ paddingRight: 0 }}
-		>
+		<div className="body-mrgn">
+			<h2>Degree Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
 				<h3 align="center">Degree Details</h3>
 				<div
@@ -118,6 +115,7 @@ const DegreeViewFunc = () => {
 											<span>&nbsp;&nbsp;&nbsp;</span>
 											<Button
 												className="mr-2"
+												variant="success"
 												onClick={(event) =>
 													handleUpdate(event, stu)
 												}

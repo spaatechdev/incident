@@ -71,13 +71,9 @@ const SkillViewFunc = () => {
 	let EditModalClose = () => setEditModalShow(false);
 	// let skills = ServicesFunc("skills/")
 	return (
-		<div
-			className="container-fluid side-container"
-			id="Container"
-			style={{ paddingRight: 0 }}
-		>
+		<div className="body-mrgn">
+			<h2>Skill Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
-				<h3 align="center">Skill Details</h3>
 				<div
 					class="tableFixHead"
 					style={{ paddingLeft: 0, paddingRight: 0 }}
@@ -118,6 +114,7 @@ const SkillViewFunc = () => {
 											<span>&nbsp;&nbsp;&nbsp;</span>
 											<Button
 												className="mr-2"
+												variant="success"
 												onClick={(event) =>
 													handleUpdate(event, stu)
 												}

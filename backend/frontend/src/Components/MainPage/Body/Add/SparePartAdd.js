@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
+import { FaTools } from "react-icons/fa";
 
 const SparePartAddFunc = () => {
 	const handleSubmit = (e) => {
@@ -32,11 +33,9 @@ const SparePartAddFunc = () => {
 	};
 
 	return (
-		<div className="container">
-			<p></p>
-			<h2 style = {{paddingLeft : 520 }}>Add Spare Part</h2>
-			<br/>
-			<Form onSubmit={handleSubmit} >
+		<div className="body-mrgn">
+		<h2><FaTools className="fa-style" /> Add Spare Part</h2>
+			<Form onSubmit={handleSubmit} className="white-bg">
 					<Row>
 							<Col sm={6}>
 								<Form.Group controlId="name">
@@ -75,12 +74,14 @@ const SparePartAddFunc = () => {
 										required
 									/>
 								</Form.Group>
-								<br/>
+								</Col>
+							<Col sm={12}>
 								<Form.Group>
-									<p></p>
+									<div class="pt-4 submit">
 									<Button variant="primary" type="submit">
 										Submit
 									</Button>
+									</div>
 								</Form.Group>
 							</Col>
 					</Row>

@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
+import { FaScroll } from "react-icons/fa";
 
 const ProductAddFunc = () => {
 	const handleSubmit = (e) => {
@@ -30,11 +31,9 @@ const ProductAddFunc = () => {
 	};
 
 	return (
-		<div className="container">
-			<p></p>
-			<h2 style = {{paddingLeft : 520 }}>Add Spare Part</h2>
-			<br/>
-			<Form onSubmit={handleSubmit} >
+		<div className="body-mrgn">
+      <h2><FaScroll className="fa-style" /> Add Product</h2>
+			<Form onSubmit={handleSubmit} className="white-bg">
             <Row>
                <Col sm={6}>
                   <Form.Group controlId="name">
@@ -65,12 +64,14 @@ const ProductAddFunc = () => {
                         required
                      />
                   </Form.Group>
-                  <br/>
+                  </Col>
+                  <Col sm={12}>
                   <Form.Group>
-                     <p></p>
+                     <div className="pt-4 submit">
                      <Button variant="primary" type="submit">
                         Submit
                      </Button>
+                     </div>
                   </Form.Group>
                </Col>
             </Row>

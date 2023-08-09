@@ -7,6 +7,7 @@ import "../../../../CSS/View.css";
 import ServiceUpdateFunc from "../Update/ServiceUpdate";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
+import { FaFileAlt } from "react-icons/fa";
 
 const ServiceViewFunc = () => {
 	const [services, setServices] = useState([]);
@@ -71,11 +72,8 @@ const ServiceViewFunc = () => {
 	let EditModalClose = () => setEditModalShow(false);
 	// let services = ServicesFunc(dynamic_urls.services)
 	return (
-		<div
-			className="container-fluid side-container"
-			id="Container"
-			style={{ paddingRight: 0 }}
-		>
+		<div className="body-mrgn">
+		 <h2><FaFileAlt className="fa-style" /> Service Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
 				<h3 align="center">Service Details</h3>
 				<div
@@ -120,6 +118,7 @@ const ServiceViewFunc = () => {
 											<span>&nbsp;&nbsp;&nbsp;</span>
 											<Button
 												className="mr-2"
+												variant="success"
 												onClick={(event) =>
 													handleUpdate(event, stu)
 												}

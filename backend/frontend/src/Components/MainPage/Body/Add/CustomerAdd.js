@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
 import axios from "axios";
+import { FaUserAlt } from "react-icons/fa";
 import dynamic_urls from "../../../../env";
 
 const CustomerAddFunc = () => {
@@ -32,65 +33,67 @@ const CustomerAddFunc = () => {
 	};
 
 	return (
-		<div className="container">
-			<p></p>
-			<h2 style = {{paddingLeft : 520 }}>Add Customer</h2>
-			<br/>
-			<Form onSubmit={handleSubmit} >
-					<Row>
-							<Col sm={6}>
-								<Form.Group controlId="name">
-									<Form.Label>Name</Form.Label>
-									<Form.Control
-										type="text"
-										name="name"
-										required
-										placeholder=""
-									/>
-								</Form.Group>
+		<div className="body-mrgn">
+			<h2><FaUserAlt className="fa-style" /> Add Customer</h2>
 
-								<Form.Group controlId="address">
-									<Form.Label>Address</Form.Label>
-									<Form.Control
-										type="text"
-										name="address"
-										required
-										placeholder=""
-									/>
-								</Form.Group>
-							</Col>
-							<Col sm={6}>
-								<Form.Group controlId="email">
-									<Form.Label>Email</Form.Label>
-									<Form.Control
-										type="email"
-										name="email"
-										pattern=".+\.com" 
-										title="Only well formed e-mail addresses belonging to .com servers are accepted"
-										required
-										placeholder=""
-									/>
-								</Form.Group>
-								<Form.Group controlId="phone">
-									<Form.Label>Phone</Form.Label>
-									<Form.Control
-										type="number"
-										name="phone"
-										required
-										min="1000000000"
-										max="9999999999"
-									/>
-								</Form.Group>
-								<br/>
-								<Form.Group>
-									<p></p>
-									<Button variant="primary" type="submit">
-										Submit
-									</Button>
-								</Form.Group>
-							</Col>
-					</Row>
-					</Form>
+			<Form onSubmit={handleSubmit} className="white-bg">
+				<Row>
+					<Col sm={6}>
+						<Form.Group controlId="name">
+							<Form.Label>Name</Form.Label>
+							<Form.Control
+								type="text"
+								name="name"
+								required
+								placeholder=""
+							/>
+						</Form.Group>
+
+						<Form.Group controlId="address">
+							<Form.Label>Address</Form.Label>
+							<Form.Control
+								type="text"
+								name="address"
+								required
+								placeholder=""
+							/>
+						</Form.Group>
+					</Col>
+					<Col sm={6}>
+						<Form.Group controlId="email">
+							<Form.Label>Email</Form.Label>
+							<Form.Control
+								type="email"
+								name="email"
+								pattern=".+\.com"
+								title="Only well formed e-mail addresses belonging to .com servers are accepted"
+								required
+								placeholder=""
+							/>
+						</Form.Group>
+						<Form.Group controlId="phone">
+							<Form.Label>Phone</Form.Label>
+							<Form.Control
+								type="number"
+								name="phone"
+								required
+								min="1000000000"
+								max="9999999999"
+							/>
+						</Form.Group>
+					</Col>
+					<Col sm={12}>
+						<Form.Group>
+							<div className="pt-4 submit">
+								<Button variant="primary" type="submit">
+									Submit
+								</Button>
+							</div>
+						</Form.Group>
+					</Col>
+
+				</Row>
+			</Form>
 		</div>
 	);
 };

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Modal, Col, Row, Form, Button } from "react-bootstrap";
 import { FormControl, FormGroup, FormLabel } from "react-bootstrap";
 import axios from "axios";
-import { FaUserAlt } from "react-icons/fa";
+import { FaUserTie } from "react-icons/fa";
 import dynamic_urls from "../../../../env";
 
 const EmployeeAddFunc = () => {
@@ -85,7 +85,7 @@ const EmployeeAddFunc = () => {
 
 	return (
 		<div className="body-mrgn">
-			<h2><FaUserAlt className="fa-style" /> Add Employee</h2>
+			<h2><FaUserTie className="fa-style" /> Add Employee</h2>
 			<Form onSubmit={handleSubmit} className="white-bg">
 				<Row>
 					<Col sm={6}>

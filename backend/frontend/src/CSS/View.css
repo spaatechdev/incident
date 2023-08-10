@@ -3,7 +3,7 @@
 }
 
 .side-row {
-   padding: 30px;
+   padding: 30px 10px;
 }
 
 .react-bootstrap-table thead { 
@@ -20,7 +20,7 @@
 
 .tableFixHead {
    overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
-   height: 500px; /* gives an initial height of 200px to the table */
+   height: 400px; /* gives an initial height of 200px to the table */
  }
  .tableFixHeadd {
   overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
@@ -29,6 +29,8 @@
  .tableFixHead thead th {
    position: sticky; /* make the table heads sticky */
    top: 0px; /* table head will be placed from the top of the table and sticks to it */
+   font-size: 13px;
+   font-weight: 300;
  }
  table {
    border-collapse: collapse; /* make the table borders collapse to each other */
@@ -38,4 +40,5 @@
  td {
    padding: 8px 16px;
    border: 1px solid #ccc;
+   font-size: 13px;
  }

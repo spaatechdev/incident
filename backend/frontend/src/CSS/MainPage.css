@@ -16,6 +16,7 @@ body {
       padding:0;
       border-top: groove;
       background-color: #efefef!important;
+      font-family: sans-serif;
 }
 .body-mrgn {
    padding: 4%;
@@ -86,6 +87,9 @@ body {
     .btn-success {
       border-radius: 20px!important;
       padding: 0px 6px 5px 6px!important;
+      --bs-btn-color: #198754!important;
+      --bs-btn-bg: transparent!important;
+      --bs-btn-border-color: transparent!important;
     }
     .footer-bg {
       background: #293e40;
@@ -101,4 +105,9 @@ body {
     padding: 6px;
     margin-right: 8px;
     font-size: 35px;
+    }
+    .btn-danger {
+      --bs-btn-color: #dc3545!important;
+      --bs-btn-bg: transparent!important;
+      --bs-btn-border-color: transparentf!important;
     }

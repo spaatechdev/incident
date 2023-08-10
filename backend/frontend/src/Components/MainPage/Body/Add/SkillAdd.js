@@ -2,6 +2,7 @@ import React from "react";
 import {Col, Row, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
+import { FaElementor } from "react-icons/fa";
 
 const SkillAddFunc = () => {
 	const handleSubmit = (e) => {
@@ -27,7 +28,7 @@ const SkillAddFunc = () => {
 
 	return (
 		<div className="body-mrgn">
-			<h2>Add Employee Skill</h2>
+			<h2><FaElementor className="fa-style" /> Add Employee Skill</h2>
 		<Form onSubmit={handleSubmit} className="white-bg">
 					<Row>
 							<Col sm={6}>

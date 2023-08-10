@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
+import { FaFileAlt } from "react-icons/fa";
 import { RiDeleteBin5Line, RiFileZipFill } from "react-icons/ri";
 import { Button, ButtonToolbar } from "react-bootstrap";
 import "../../../../CSS/View.css";
@@ -72,7 +73,7 @@ const IncidentStatusViewFunc = () => {
 	// let incidentStatuss = ServicesFunc("incidentStatuss/")
 	return (
 		<div className="body-mrgn">
-			<h2>Incident Status Details</h2>
+			<h2><FaFileAlt className="fa-style" /> Incident Status Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
 				<h3 align="center">Incident Status Details</h3>
 				<div

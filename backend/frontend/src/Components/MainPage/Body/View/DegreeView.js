@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
+import { FaFileAlt } from "react-icons/fa";
 import { RiDeleteBin5Line, RiFileZipFill } from "react-icons/ri";
 import { Button, ButtonToolbar } from "react-bootstrap";
 import "../../../../CSS/View.css";
@@ -72,9 +73,8 @@ const DegreeViewFunc = () => {
 	// let degrees = ServicesFunc(dynamic_urls.degrees)
 	return (
 		<div className="body-mrgn">
-			<h2>Degree Details</h2>
+			<h2><FaFileAlt className="fa-style" /> Degree Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
-				<h3 align="center">Degree Details</h3>
 				<div
 					class="tableFixHead"
 					style={{ paddingLeft: 0, paddingRight: 0 }}

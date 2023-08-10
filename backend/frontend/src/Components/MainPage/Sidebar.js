@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "../../CSS/Sidebar.css";
 import { FaAngleDown } from "react-icons/fa";
+import { FaTabletAlt } from "react-icons/fa";
+import { FaUserTie } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
+import { FaSimCard } from "react-icons/fa";
+import { FaScroll } from "react-icons/fa";
+import { FaTools } from "react-icons/fa";
+import { FaElementor } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa";
+import { FaRegListAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom'
 const SidebarFunc = () => {
 	const [isSuperuser, setIsSuperuser] = useState(false);
@@ -30,13 +39,13 @@ const SidebarFunc = () => {
 					<ul className="list-unstyled ps-0">
 						<li className="mb-1">
 							<button
-								className="btn btn-toggle align-items-center rounded collapsed"
+								className="btn btn-toggle align-items-center collapsed"
 								id="incidents"
 								data-bs-toggle="collapse"
 								data-bs-target="#incidents-collapse"
 								aria-expanded="false"
 								onClick={(e)=>{clickFunc(e.target.id)}}
-							>
+							><FaTabletAlt className="nav-icon" />
 								Incidents
 							</button>
 							<div className="collapse" id="incidents-collapse">
@@ -44,12 +53,12 @@ const SidebarFunc = () => {
 									{isSuperuser &&
 										<li>
 											<Link to="/incidents/add" className="link">
-												Add
+											 Add
 											</Link>
 										</li>}
 									<li>
 										<Link to="/incidents/view" className="link">
-											View
+										 View
 										</Link>
 									</li>
 								</ul>
@@ -59,12 +68,12 @@ const SidebarFunc = () => {
 							<li className="mb-1">
 								<button
 									id="customers"
-									className="btn btn-toggle align-items-center rounded collapsed"
+									className="btn btn-toggle align-items-center collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#customers-collapse"
 									aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
-								>
+								><FaUserAlt className="nav-icon" />
 									Customers
 								</button>
 								<div className="collapse" id="customers-collapse">
@@ -86,12 +95,12 @@ const SidebarFunc = () => {
 							<li className="mb-1">
 								<button
 									id="employees"
-									className="btn btn-toggle align-items-center rounded collapsed"
+									className="btn btn-toggle align-items-center collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#employees-collapse"
 									aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
-								>
+								><FaUserTie className="nav-icon" />
 									Employees
 								</button>
 								<div className="collapse" id="employees-collapse">
@@ -113,12 +122,12 @@ const SidebarFunc = () => {
 							<li className="mb-1">
 								<button
 								id="services"
-									className="btn btn-toggle align-items-center rounded collapsed"
+									className="btn btn-toggle align-items-center collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#services-collapse"
 									aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
-								>
+								><FaSimCard className="nav-icon" />
 									Services
 								</button>
 								<div className="collapse" id="services-collapse">
@@ -140,12 +149,12 @@ const SidebarFunc = () => {
 							<li className="mb-1">
 								<button
 								id="products"
-									className="btn btn-toggle align-items-center rounded collapsed"
+									className="btn btn-toggle align-items-center collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#products-collapse"
 									aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
-								>
+								><FaScroll className="nav-icon" />
 									Products
 								</button>
 								<div className="collapse" id="products-collapse">
@@ -167,12 +176,12 @@ const SidebarFunc = () => {
 							<li className="mb-1">
 								<button
 								id="spareParts"
-									className="btn btn-toggle align-items-center rounded collapsed"
+									className="btn btn-toggle align-items-center collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#spareParts-collapse"
 									aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
-								>
+								><FaTools className="nav-icon" />
 									Spare Parts
 								</button>
 								<div className="collapse" id="spareParts-collapse">
@@ -194,12 +203,12 @@ const SidebarFunc = () => {
 							<li className="mb-1">
 								<button
 									id="skills"
-									className="btn btn-toggle align-items-center rounded collapsed"
+									className="btn btn-toggle align-items-center collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#skills-collapse"
 									aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
-								>
+								><FaElementor className="nav-icon" />
 									Employee Skills
 								</button>
 								<div className="collapse" id="skills-collapse">
@@ -221,12 +230,12 @@ const SidebarFunc = () => {
 							<li className="mb-1">
 								<button
 									id="users"
-									className="btn btn-toggle align-items-center rounded collapsed"
+									className="btn btn-toggle align-items-center collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#users-collapse"
 									aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
-								>
+								><FaRegUser className="nav-icon" />
 									Users
 								</button>
 								<div className="collapse" id="users-collapse">
@@ -243,12 +252,12 @@ const SidebarFunc = () => {
 							<li className="mb-1">
 								<button
 								    id="miscellaneous"
-									className="btn btn-toggle align-items-center rounded collapsed"
+									className="btn btn-toggle align-items-center collapsed"
 									data-bs-toggle="collapse"
 									data-bs-target="#miscellaneous-collapse"
 									aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
-								>
+								><FaRegListAlt className="nav-icon" />
 									Miscellaneous
 								</button>
 								<div className="collapse" id="miscellaneous-collapse">

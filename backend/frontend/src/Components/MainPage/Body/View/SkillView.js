@@ -7,6 +7,7 @@ import "../../../../CSS/View.css";
 import SkillUpdateFunc from "../Update/SkillUpdate";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
+import { FaFileAlt } from "react-icons/fa";
 
 const SkillViewFunc = () => {
 	const [skills, setSkills] = useState([]);
@@ -72,7 +73,7 @@ const SkillViewFunc = () => {
 	// let skills = ServicesFunc("skills/")
 	return (
 		<div className="body-mrgn">
-			<h2>Skill Details</h2>
+			<h2><FaFileAlt className="fa-style" /> Skill Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
 				<div
 					class="tableFixHead"

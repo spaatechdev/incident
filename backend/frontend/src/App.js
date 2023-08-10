@@ -64,7 +64,7 @@ function App() {
 				{isAuth ?
 					<div class="container-fluid">
 						<div class="row">
-							<div class="col-lg-2 px-0"><SidebarFunc /></div>
+							<div class="col-lg-2 px-0 sidenav-bg"><SidebarFunc /></div>
 							<div class="col-lg-10">
 								<Routes>
 									<Route path="/" element={<BodyFunc comp="Image"/>} />
@@ -186,6 +186,9 @@ function App() {
 						</div>
 					</div>
 				</div> */}
+				<div class="container-fluid px-0 footer-bg">
+				©2023 Copyright Incident Management System. All Rights Reserved
+				</div>
 			</div>
 
 

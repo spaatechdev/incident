@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
+import { FaFileAlt } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { Button, ButtonToolbar } from "react-bootstrap";
 import "../../../../CSS/View.css";
@@ -66,7 +67,7 @@ const UserViewFunc = ({ callback }) => {
 	};
 	return (
 		<div className="body-mrgn">
-			<h2>User Details</h2>
+			<h2><FaFileAlt className="fa-style" /> User Details</h2>
 			<div className="row">
 				
 				<p id="before-table"></p>

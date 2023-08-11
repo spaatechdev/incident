@@ -8,6 +8,7 @@ import ProductUpdateFunc from "../Update/ProductUpdate";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
 import { FaFileAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom'
 
 const ProductViewFunc = () => {
 	const [products, setProducts] = useState([]);
@@ -74,10 +75,16 @@ const ProductViewFunc = () => {
 		<div className="body-mrgn">
 		<h2><FaFileAlt className="fa-style" /> Product Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
-				<h3 align="center">Product Details</h3>
+			<Link to="/products/add" className="link">
+					<div className="submit float-end" style={{ paddingLeft: 0, paddingRight: 0, position: "relative", bottom: "100%" }}>	
+					<Button variant="primary" type="submit" className="float-end">
+						Add Product
+					</Button>
+					</div>
+				</Link>
 				<div
 					class="tableFixHead"
-					style={{ paddingLeft: 0, paddingRight: 0 }}
+					style={{ paddingLeft: 0, paddingRight: 0, marginTop: "-30px" }}
 				>
 					<Table
 						striped

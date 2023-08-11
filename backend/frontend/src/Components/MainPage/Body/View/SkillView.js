@@ -8,6 +8,7 @@ import SkillUpdateFunc from "../Update/SkillUpdate";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
 import { FaFileAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom'
 
 const SkillViewFunc = () => {
 	const [skills, setSkills] = useState([]);
@@ -75,9 +76,16 @@ const SkillViewFunc = () => {
 		<div className="body-mrgn">
 			<h2><FaFileAlt className="fa-style" /> Skill Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
+			<Link to="/skills/add" className="link">
+					<div className="submit float-end" style={{ paddingLeft: 0, paddingRight: 0, position: "relative", bottom: "100%" }}>	
+					<Button variant="primary" type="submit" className="float-end">
+						Add Skill
+					</Button>
+					</div>
+				</Link>
 				<div
 					class="tableFixHead"
-					style={{ paddingLeft: 0, paddingRight: 0 }}
+					style={{ paddingLeft: 0, paddingRight: 0, marginTop: "-30px" }}
 				>
 					<Table
 						striped

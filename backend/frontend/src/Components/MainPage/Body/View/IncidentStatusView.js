@@ -75,8 +75,7 @@ const IncidentStatusViewFunc = () => {
 		<div className="body-mrgn">
 			<h2><FaFileAlt className="fa-style" /> Incident Status Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
-				<h3 align="center">Incident Status Details</h3>
-				<div
+			<div
 					class="tableFixHead"
 					style={{ paddingLeft: 0, paddingRight: 0 }}
 				>

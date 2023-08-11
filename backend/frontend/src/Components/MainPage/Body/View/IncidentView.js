@@ -9,7 +9,8 @@ import IncidentUpdateFunc from "../Update/IncidentUpdate";
 import IncidentUpdateHistoryFunc from "../Update/IncidentUpdateHistory";
 import axios from "axios";
 import { useLongPress } from "use-long-press";
-import dynamic_urls from "../../../../env.js" 
+import dynamic_urls from "../../../../env.js"
+import { Link } from 'react-router-dom'
 
 const IncidentViewFunc = () => {
 	const [incidents, setIncidents] = useState([]);
@@ -32,7 +33,7 @@ const IncidentViewFunc = () => {
 		(async () => {
 			try {
 				const response = await axios.get(
-					dynamic_urls.SERVER_URL+dynamic_urls.incidents,
+					dynamic_urls.SERVER_URL + dynamic_urls.incidents,
 					{
 						headers: {
 							"Content-Type": "application/json",
@@ -51,13 +52,14 @@ const IncidentViewFunc = () => {
 	let clickHoldTimer = null;
 
 	const handleMouseDown = (e, stu) => {
-		if(!editModalShow){
-		clickHoldTimer = setTimeout(() => {
-			e.preventDefault();
-			setEditHistoryModalShow(true);
-			setEditHistory(stu.editHistory);
-			//Action to be performed after holding down mouse
-		}, 3000)} //Change 1000 to number of milliseconds required for mouse hold
+		if (!editModalShow) {
+			clickHoldTimer = setTimeout(() => {
+				e.preventDefault();
+				setEditHistoryModalShow(true);
+				setEditHistory(stu.editHistory);
+				//Action to be performed after holding down mouse
+			}, 3000)
+		} //Change 1000 to number of milliseconds required for mouse hold
 	};
 
 	const handleMouseUp = () => {
@@ -73,7 +75,7 @@ const IncidentViewFunc = () => {
 	const handleUpdateState = () => {
 		setIsUpdated(isUpdated + 1);
 	};
-	
+
 	const handleDeleteState = () => {
 		setIsDeleted(isDeleted + 1);
 	};
@@ -83,7 +85,7 @@ const IncidentViewFunc = () => {
 			e.preventDefault();
 			handleDeleteState();
 			axios
-				.delete(dynamic_urls.SERVER_URL+dynamic_urls.incidents + incidentId + "/", {
+				.delete(dynamic_urls.SERVER_URL + dynamic_urls.incidents + incidentId + "/", {
 					headers: {
 						Accept: "application/json",
 						"Content-Type": "application/json",
@@ -116,23 +118,22 @@ const IncidentViewFunc = () => {
 		return newDate;
 	};
 
-	const time =(t) =>{
-		let hr=Number(t.split(":")[0])
-		if(hr>=12)
-		{	if(hr>12)
-				return String(hr-12)+":"+t.split(":")[1]+":"+t.split(":")[2]+" PM"
+	const time = (t) => {
+		let hr = Number(t.split(":")[0])
+		if (hr >= 12) {
+			if (hr > 12)
+				return String(hr - 12) + ":" + t.split(":")[1] + ":" + t.split(":")[2] + " PM"
 			else
-				return String(hr)+":"+t.split(":")[1]+":"+t.split(":")[2]+" PM"
+				return String(hr) + ":" + t.split(":")[1] + ":" + t.split(":")[2] + " PM"
 		}
-		else
-		{
-			if(hr<1)
-				return "12"+":"+t.split(":")[1]+":"+t.split(":")[2]+" AM"
+		else {
+			if (hr < 1)
+				return "12" + ":" + t.split(":")[1] + ":" + t.split(":")[2] + " AM"
 			else
-				return String(hr)+":"+t.split(":")[1]+":"+t.split(":")[2]+" AM"
+				return String(hr) + ":" + t.split(":")[1] + ":" + t.split(":")[2] + " AM"
 		}
 
-  	}
+	}
 	let EditModalClose = () => setEditModalShow(false);
 	let EditHistoryModalClose = () => setEditHistoryModalShow(false);
 
@@ -144,9 +145,17 @@ const IncidentViewFunc = () => {
 			<div className="row side-row" style={{ padding: 15 }}>
 				{/* <h3 align="center">Incident Details</h3> */}
 				{/* <p id="before-table"></p> */}
+
+				<Link to="/incidents/add" className="link">
+					<div className="submit float-end" style={{ paddingLeft: 0, paddingRight: 0, position: "relative", bottom: "100%" }}>	
+					<Button variant="primary" type="submit" className="float-end">
+						Add Incident
+					</Button>
+					</div>
+				</Link>
 				<div
 					className="tableFixHead"
-					style={{ paddingLeft: 0, paddingRight: 0 }}
+					style={{ paddingLeft: 0, paddingRight: 0, marginTop: "-30px" }}
 				>
 					<Table
 						striped
@@ -193,7 +202,7 @@ const IncidentViewFunc = () => {
 											<td>{stu.incidentDescription}</td>
 											<td>{date(stu.incidentDate)}</td>
 											<td>{time(stu.incidentTime)}</td>
-											
+
 											<td>{stu.customer.name}</td>
 											<td>
 												{uniqueCustomerID(
@@ -219,7 +228,7 @@ const IncidentViewFunc = () => {
 											<td>{stu.incidentStatus.name}</td>
 											<td>{date(stu.expectedCompletionDate)}</td>
 											<td>{time(stu.expectedCompletionTime)}</td>
-											<td>{stu.amount?`₹${stu.amount}`:null}</td>
+											<td>{stu.amount ? `₹${stu.amount}` : null}</td>
 											<td width="110rem">
 												{isSuperuser && (
 													<Button
@@ -245,7 +254,7 @@ const IncidentViewFunc = () => {
 												>
 													<FaEdit />
 												</Button>
-												
+
 												<IncidentUpdateFunc
 													show={editModalShow}
 													incident={editIncident}
@@ -296,7 +305,7 @@ const IncidentViewFunc = () => {
 											<td>{stu.incidentStatus.name}</td>
 											<td>{date(stu.expectedCompletionDate)}</td>
 											<td>{time(stu.expectedCompletionTime)}</td>
-											<td>{stu.amount?`₹${stu.amount}`:null}</td>
+											<td>{stu.amount ? `₹${stu.amount}` : null}</td>
 											<td>
 												<Button
 													className="mr-2"

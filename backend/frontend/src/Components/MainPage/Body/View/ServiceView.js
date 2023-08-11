@@ -8,6 +8,7 @@ import ServiceUpdateFunc from "../Update/ServiceUpdate";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
 import { FaFileAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom'
 
 const ServiceViewFunc = () => {
 	const [services, setServices] = useState([]);
@@ -75,10 +76,16 @@ const ServiceViewFunc = () => {
 		<div className="body-mrgn">
 		 <h2><FaFileAlt className="fa-style" /> Service Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
-				<h3 align="center">Service Details</h3>
+			<Link to="/services/add" className="link">
+					<div className="submit float-end" style={{ paddingLeft: 0, paddingRight: 0, position: "relative", bottom: "100%" }}>	
+					<Button variant="primary" type="submit" className="float-end">
+						Add Services
+					</Button>
+					</div>
+				</Link>
 				<div
 					class="tableFixHead"
-					style={{ paddingLeft: 0, paddingRight: 0 }}
+					style={{ paddingLeft: 0, paddingRight: 0, marginTop: "-30px" }}
 				>
 					<Table
 						striped

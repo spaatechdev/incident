@@ -38,16 +38,19 @@ const SidebarFunc = () => {
 				<div className="flex-shrink-0 p-3">
 					<ul className="list-unstyled ps-0">
 						<li className="mb-1">
-							<button
-								className="btn btn-toggle align-items-center collapsed"
-								id="incidents"
-								data-bs-toggle="collapse"
-								data-bs-target="#incidents-collapse"
-								aria-expanded="false"
-								onClick={(e)=>{clickFunc(e.target.id)}}
-							><FaTabletAlt className="nav-icon" />
-								Incidents
-							</button>
+							<Link to="/incidents/view" className="link">
+								<button
+									className="btn btn-toggle align-items-center"
+									id="incidents"
+									// data-bs-toggle="collapse"
+									// data-bs-target="#incidents-collapse"
+									// aria-expanded="false"
+									onClick={(e)=>{clickFunc(e.target.id)}}
+								><FaTabletAlt className="nav-icon" />
+									Incidents
+								</button>
+							</Link>
+							
 							<div className="collapse" id="incidents-collapse">
 								<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 									{isSuperuser &&
@@ -66,16 +69,18 @@ const SidebarFunc = () => {
 						</li>
 						{isSuperuser &&
 							<li className="mb-1">
+								<Link to="/customers/view" className="link">
 								<button
 									id="customers"
 									className="btn btn-toggle align-items-center collapsed"
-									data-bs-toggle="collapse"
-									data-bs-target="#customers-collapse"
-									aria-expanded="false"
+									// data-bs-toggle="collapse"
+									// data-bs-target="#customers-collapse"
+									// aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
 								><FaUserAlt className="nav-icon" />
 									Customers
 								</button>
+								</Link>
 								<div className="collapse" id="customers-collapse">
 									<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 										<li>
@@ -93,16 +98,18 @@ const SidebarFunc = () => {
 							</li>}
 						{isSuperuser &&
 							<li className="mb-1">
+								<Link to="/employees/view" className="link">
 								<button
 									id="employees"
 									className="btn btn-toggle align-items-center collapsed"
-									data-bs-toggle="collapse"
-									data-bs-target="#employees-collapse"
-									aria-expanded="false"
+									// data-bs-toggle="collapse"
+									// data-bs-target="#employees-collapse"
+									// aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
 								><FaUserTie className="nav-icon" />
 									Employees
 								</button>
+								</Link>
 								<div className="collapse" id="employees-collapse">
 									<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 										<li>
@@ -120,16 +127,18 @@ const SidebarFunc = () => {
 							</li>}
 						{isSuperuser &&
 							<li className="mb-1">
+								<Link to="/services/view" className="link">
 								<button
 								id="services"
 									className="btn btn-toggle align-items-center collapsed"
-									data-bs-toggle="collapse"
-									data-bs-target="#services-collapse"
-									aria-expanded="false"
+									// data-bs-toggle="collapse"
+									// data-bs-target="#services-collapse"
+									// aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
 								><FaSimCard className="nav-icon" />
 									Services
 								</button>
+								</Link>
 								<div className="collapse" id="services-collapse">
 									<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 										<li>
@@ -147,16 +156,18 @@ const SidebarFunc = () => {
 							</li>}
 						{isSuperuser &&
 							<li className="mb-1">
+								<Link to="/products/view" className="link">
 								<button
 								id="products"
 									className="btn btn-toggle align-items-center collapsed"
-									data-bs-toggle="collapse"
-									data-bs-target="#products-collapse"
-									aria-expanded="false"
+									// data-bs-toggle="collapse"
+									// data-bs-target="#products-collapse"
+									// aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
 								><FaScroll className="nav-icon" />
 									Products
 								</button>
+								</Link>
 								<div className="collapse" id="products-collapse">
 									<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 										<li>
@@ -174,16 +185,18 @@ const SidebarFunc = () => {
 							</li>}
 						{isSuperuser &&
 							<li className="mb-1">
+								<Link to="/spareParts/view" className="link">
 								<button
 								id="spareParts"
 									className="btn btn-toggle align-items-center collapsed"
-									data-bs-toggle="collapse"
-									data-bs-target="#spareParts-collapse"
-									aria-expanded="false"
+									// data-bs-toggle="collapse"
+									// data-bs-target="#spareParts-collapse"
+									// aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
 								><FaTools className="nav-icon" />
 									Spare Parts
 								</button>
+								</Link>
 								<div className="collapse" id="spareParts-collapse">
 									<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 										<li>
@@ -201,16 +214,18 @@ const SidebarFunc = () => {
 							</li>}
 						{isSuperuser &&
 							<li className="mb-1">
+								<Link to="/skills/view" className="link">
 								<button
 									id="skills"
 									className="btn btn-toggle align-items-center collapsed"
-									data-bs-toggle="collapse"
-									data-bs-target="#skills-collapse"
-									aria-expanded="false"
+									// data-bs-toggle="collapse"
+									// data-bs-target="#skills-collapse"
+									// aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
 								><FaElementor className="nav-icon" />
 									Employee Skills
 								</button>
+								</Link>
 								<div className="collapse" id="skills-collapse">
 									<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 										<li>
@@ -228,16 +243,18 @@ const SidebarFunc = () => {
 							</li>}
 						{isSuperuser &&
 							<li className="mb-1">
+								<Link to="/users/view" className="link">
 								<button
 									id="users"
 									className="btn btn-toggle align-items-center collapsed"
-									data-bs-toggle="collapse"
-									data-bs-target="#users-collapse"
-									aria-expanded="false"
+									// data-bs-toggle="collapse"
+									// data-bs-target="#users-collapse"
+									// aria-expanded="false"
 									onClick={(e)=>{clickFunc(e.target.id)}}
 								><FaRegUser className="nav-icon" />
 									Users
 								</button>
+								</Link>
 								<div className="collapse" id="users-collapse">
 									<ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 										<li>
@@ -280,12 +297,12 @@ const SidebarFunc = () => {
 									</ul>
 								</div>
 							</li>}
-						{isSuperuser &&
+						{/* {isSuperuser &&
 							<li className="mb-1">
 								<Link to="/query" className="link">
 									Query
 								</Link>
-							</li>}
+							</li>} */}
 					</ul>
 				</div>
 				{/* <div className="dropdown">

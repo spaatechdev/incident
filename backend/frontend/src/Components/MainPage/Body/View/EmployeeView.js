@@ -8,6 +8,7 @@ import "../../../../CSS/View.css";
 import EmployeeUpdateFunc from "../Update/EmployeeUpdate";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
+import { Link } from 'react-router-dom'
 
 const EmployeeViewFunc = ({ callback }) => {
 	const [employees, setEmployees] = useState([]);
@@ -82,9 +83,17 @@ const EmployeeViewFunc = ({ callback }) => {
 		<div className="body-mrgn">
 		<h2><FaFileAlt className="fa-style" /> Employee Details</h2>
 			<div className="row side-row">
+				
+			<Link to="/employees/add" className="link">
+					<div className="submit float-end" style={{ paddingLeft: 0, paddingRight: 0, position: "relative", bottom: "100%" }}>	
+					<Button variant="primary" type="submit" className="float-end">
+						Add Employee
+					</Button>
+					</div>
+				</Link>
 				<div
 					class="tableFixHead"
-					style={{ paddingLeft: 0, paddingRight: 0 }}
+					style={{ paddingLeft: 0, paddingRight: 0, marginTop: "-30px" }}
 				>
 					<Table
 						striped

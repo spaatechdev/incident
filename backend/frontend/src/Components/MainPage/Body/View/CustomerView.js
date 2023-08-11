@@ -8,6 +8,7 @@ import "../../../../CSS/View.css";
 import CustomerUpdateFunc from "../Update/CustomerUpdate";
 import axios from "axios";
 import dynamic_urls from "../../../../env";
+import { Link } from 'react-router-dom'
 
 const CustomerViewFunc = () => {
 	const [customers, setCustomers] = useState([]);
@@ -75,10 +76,16 @@ const CustomerViewFunc = () => {
 		<div className="body-mrgn">
 			<h2><FaFileAlt className="fa-style" /> Customer Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
-				<h3 align="center">Customer Details</h3>
+			<Link to="/customers/add" className="link">
+					<div className="submit float-end" style={{ paddingLeft: 0, paddingRight: 0, position: "relative", bottom: "100%" }}>	
+					<Button variant="primary" type="submit" className="float-end">
+						Add Customer
+					</Button>
+					</div>
+				</Link>
 				<div
 					class="tableFixHead"
-					style={{ paddingLeft: 0, paddingRight: 0 }}
+					style={{ paddingLeft: 0, paddingRight: 0, marginTop: "-30px" }}
 				>
 					<Table
 						striped

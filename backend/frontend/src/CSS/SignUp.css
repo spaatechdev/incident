@@ -3,7 +3,12 @@
    margin-top: 18px; 
 }
 .Auth-form-container{
-   border-style:groove;
-   border-color: rgb(177, 177, 177);
-   padding: 1rem;
+   border-style: groove;
+   border-color: rgb(255 255 255 / 0%);
+   padding: 2rem 3rem;
+   background: #fff;
+   box-shadow: 0px 20px 40px #939393c7;
+}
+label {
+   font-size: 13px!important;
 }

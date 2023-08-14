@@ -38,13 +38,13 @@ const SignUpFunc = () => {
 
    return(
       <div>
-         <nav className="navbar navbar-dark bg-dark variant-dark">
+         {/* <nav className="navbar navbar-dark bg-dark variant-dark">
 				<a className="navbar-brand" href="/">
 					<h2>Incident Management System</h2>
 				</a>
-			</nav>
+			</nav> */}
 			<div className="row" id="row">
-				<div className="col-md-3 offset-md-4" >
+				<div className="col-md-4 offset-md-4" >
 					<div className="Auth-form-container">
 						<form className="Auth-form" onSubmit={handleSubmit}>
 							<div className="Auth-form-content">
@@ -63,8 +63,9 @@ const SignUpFunc = () => {
 										}
 									/>
 								</div>
-                        <div className="form-group mt-3">
-									<label>First Name</label>
+						<div className="row">
+							<div className="col-lg-6 form-group mt-2">
+							<label>First Name</label>
 									<input
 										name="first_name"
 										type="text"
@@ -75,10 +76,10 @@ const SignUpFunc = () => {
 										onChange={(e) =>
 											setFirst_name(e.target.value)
 										}
-									/>
-								</div>
-                        <div className="form-group mt-3">
-									<label>Last Name</label>
+									/>			
+							</div>
+							<div className="col-lg-6 form-group mt-2">
+							<label>Last Name</label>
 									<input
 										name="last_name"
 										type="text"
@@ -90,7 +91,8 @@ const SignUpFunc = () => {
 											setLast_name(e.target.value)
 										}
 									/>
-								</div>
+							</div>
+						</div>
                         <div className="form-group mt-3">
 									<label>Email</label>
 									<input

@@ -32,7 +32,6 @@ const ImageFunc = () => {
 			}
 		})();
 	}, [incidentsErr]);
-	console.log(incidents)
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setPicVisible(false)
@@ -49,15 +48,6 @@ const ImageFunc = () => {
 		[months[0], 10, 5],
 		[months[1], 20, 9],
 		[months[2], 15, 10],
-		[months[3], 18, 3],
-		[months[4], 10, 11],
-		[months[5], 10, 5],
-		[months[6], 20, 9],
-		[months[7], 15, 10],
-		[months[8], 18, 3],
-		[months[9], 10, 11],
-		[months[10], 18, 3],
-		[months[11], 10, 11]
 	];
 	var IncidentOptions = {
 		title: "Incidents registered vs Incidents resolved month-wise",
@@ -103,12 +93,12 @@ const ImageFunc = () => {
 			}
 		},
 		backgroundColor:{
-			stroke:"#ccc",
+			stroke:"#e0e0e0",
 			strokeWidth:2
 		},
 		width: 600,
 		height:350,
-		chartArea: { left: 70, top: 50, width: "70%",height:"60%" },
+		chartArea: { left: 70, top: 65, width: "70%",height:"60%" },
 	};
 
 	const ComplexityData = [
@@ -130,7 +120,7 @@ const ImageFunc = () => {
 		width: "100%",
 		height: 350,
 		backgroundColor:{
-			stroke:"#ccc",
+			stroke:"#e0e0e0",
 			strokeWidth:2
 		},
 		chartArea: { width: "90%", height: "70%", top: 40, left: 15 },
@@ -172,9 +162,9 @@ const ImageFunc = () => {
 		hAxis: {
 			title: "Employee names",
 			textStyle: {
-				fontSize: 13,
-				color: "#FFFFFF",
-				bold: true,
+				fontSize: 11,
+				color: "#000",
+				bold: false,
 				italic: false,
 				fontName: "Sans-Serif"
 			},
@@ -204,13 +194,16 @@ const ImageFunc = () => {
 			}
 		},
 		backgroundColor:{
-			stroke:"#ccc",
+			stroke:"#e0e0e0",
+			borderRadius: 6,
 			strokeWidth:2
 		},
+		height:300,
 		chartArea: { 
 			left: 80, 
 			top: 50, 
 			width: "80%",
+			height:"55%",
 			backgroundColor:"#efefef"
 		},
 		legend: { position: 'none' }
@@ -286,22 +279,21 @@ const ImageFunc = () => {
 							// height={"400px"}
 							/>
 						</div>
-
-						<div class="w-100"><br /></div>
-						<div class="col">
+						<div class="col my-5">
 							<Chart
 								options={EmployeeOptions}
 								chartType="ColumnChart"
 								width={"100%"}
-								height={"400px"}
+								height={"300px"}
 								data={EmployeeData}
 							/>
 						</div>
-						<div class="col">Column-4</div>
+						<div class="col my-5">Column-4</div>
 					</div>
 				</div>
 			}
-		</div></div>
+		</div>
+	</div>
 	);
 };
 export default ImageFunc;

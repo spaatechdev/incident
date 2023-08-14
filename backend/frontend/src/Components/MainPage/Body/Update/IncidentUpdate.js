@@ -783,7 +783,7 @@ const IncidentUpdateFunc = (props) => {
 							<Container style={{ marginTop: "15px" }}>
 								<Row>
 									<Col sm={5}></Col>
-									<Col sm={3} style={{ paddingLeft: "28px" }}>
+									<Col sm={3} style={{ paddingLeft: "28px", fontSize:"13px" }}>
 										<p>
 											Gross Amount :
 										</p>
@@ -791,7 +791,7 @@ const IncidentUpdateFunc = (props) => {
 											Discount :
 										</p>
 									</Col>
-									<Col sm={3} style={{ paddingLeft: "33px", textAlign:"right", paddingRight:"40px"}}>
+									<Col sm={3} style={{ paddingLeft: "33px",  fontSize:"13px", textAlign:"right", paddingRight:"40px"}}>
 										<p
 										>
 											{`₹${grossAmount}`}
@@ -816,18 +816,18 @@ const IncidentUpdateFunc = (props) => {
 									<Col sm={1}></Col>
 
 									<Col sm={5}></Col>
-									<Col sm={3} style={{ paddingLeft: "28px" }}>
+									<Col sm={3} style={{ paddingLeft: "28px", fontSize:"13px" }}>
 										Total Amount :
 									</Col>
-									<Col sm={3} style={{ paddingLeft: "33px", textAlign:"right", paddingRight:"40px"}}>{`₹${totalAmount}`}</Col>
+									<Col sm={3} style={{ paddingLeft: "33px",  fontSize:"13px", textAlign:"right", paddingRight:"40px"}}>{`₹${totalAmount}`}</Col>
 								</Row>
 							</Container>
 						</div>
 						
 						<Container>
-							<Row>
-								<Col sm={10}></Col>
-								<Col sm={2}>
+						
+							
+								<div className="col-lg-12 text-end submit">
 									<Form.Group>
 										<p></p>
 										<Button
@@ -837,8 +837,8 @@ const IncidentUpdateFunc = (props) => {
 											Submit
 										</Button>
 									</Form.Group>
-								</Col>
-							</Row>
+								</div>
+							
 						</Container>
 
 					</Form>

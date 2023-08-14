@@ -64,8 +64,8 @@ const Login = () => {
 					<h2>Incident Management System</h2>
 				</a>
 			</nav> */}
-			<div className="row">
-				<div className="col-md-3 offset-md-4" id="card">
+			<div className="col-lg-12">
+				<div className="col-md-4 offset-md-4" id="card">
 					<div className="Auth-form-container">
 						<form className="Auth-form" onSubmit={submit}>
 							<div className="Auth-form-content">
@@ -100,7 +100,7 @@ const Login = () => {
 										}
 									/>
 								</div>
-								<div className="d-grid gap-2 mt-3">
+								<div className="submit d-grid gap-2 mt-5">
 									<button
 										type="submit"
 										className="btn btn-primary"

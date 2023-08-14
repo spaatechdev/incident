@@ -92,7 +92,7 @@ class IncidentSerializer(WritableNestedModelSerializer):
         model = Incident
         fields = ['incidentId', "customIncidentId", 'incidentDescription', 'incidentDate', 'incidentTime', 'employee', 'customer',
                   'severity', 'complexity', 'level', 'incidentRemark', 'incidentStatus','expectedCompletionDate',
-                  'expectedCompletionTime', 'amount', 'editHistory', 'spareParts', 'productPurchaseDate', 'product',
+                  'expectedCompletionTime', "completionDate", 'amount', 'editHistory', 'spareParts', 'productPurchaseDate', 'product',
                   'services']
 
 

@@ -5,6 +5,7 @@ import "../../../../CSS/Image.css";
 import { Chart } from "react-google-charts";
 import dynamic_urls from "../../../../env";
 import axios from "axios";
+import { FaBuromobelexperte } from "react-icons/fa";
 
 const ImageFunc = () => {
 	const [picVisible, setPicVisible] = useState(false)
@@ -31,8 +32,7 @@ const ImageFunc = () => {
 			}
 		})();
 	}, [incidentsErr]);
-	
-
+	console.log(incidents)
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setPicVisible(false)
@@ -62,25 +62,25 @@ const ImageFunc = () => {
 	var IncidentOptions = {
 		title: "Incidents registered vs Incidents resolved month-wise",
 		titleTextStyle: {
-			fontSize: 16,
+			fontSize: 14,
 			color: "#FFFFFFF",
-			bold: false,
+			bold: true,
 			italic: false,
 			fontName: "Sans-Serif"
 		},
 		hAxis: {
 			title: "Months",
 			textStyle: {
-				fontSize: 14,
+				fontSize: 13,
 				color: "#FFFFFFF",
 				bold: false,
 				italic: false,
 				fontName: "Sans-Serif"
 			},
 			titleTextStyle: {
-				fontSize: 18,
+				fontSize: 12,
 				color: "#FFFFFFF",
-				bold: false,
+				bold: true,
 				italic: false,
 				fontName: "Sans-Serif"
 			}
@@ -88,22 +88,27 @@ const ImageFunc = () => {
 		vAxis: {
 			title: "Number of Incidents",
 			textStyle: {
-				fontSize: 14,
-				color: "#FFFFFFF",
+				fontSize: 12,
+				color: "#000",
 				bold: false,
 				italic: false,
 				fontName: "Sans-Serif"
 			},
 			titleTextStyle: {
-				fontSize: 18,
-				color: "#FFFFFFF",
-				bold: false,
+				fontSize: 12,
+				color: "#000",
+				bold: true,
 				italic: false,
 				fontName: "Sans-Serif"
 			}
 		},
+		backgroundColor:{
+			stroke:"#ccc",
+			strokeWidth:2
+		},
 		width: 600,
-		chartArea: { left: 60, top: 50, width: "70%" },
+		height:350,
+		chartArea: { left: 70, top: 50, width: "70%",height:"60%" },
 	};
 
 	const ComplexityData = [
@@ -115,15 +120,19 @@ const ImageFunc = () => {
 	const ComplexityOptions = {
 		title: "Incident Complexities Data",
 		titleTextStyle: {
-			fontSize: 16,
-			color: "#FFFFFFF",
-			bold: false,
+			fontSize: 14,
+			color: "#000",
+			bold: true,
 			italic: false,
 			fontName: "Sans-Serif",
 		},
 		is3D: true,
-		width: 350,
+		width: "100%",
 		height: 350,
+		backgroundColor:{
+			stroke:"#ccc",
+			strokeWidth:2
+		},
 		chartArea: { width: "90%", height: "70%", top: 40, left: 15 },
 		legend: {
 			position: "bottom",
@@ -154,25 +163,25 @@ const ImageFunc = () => {
 	var EmployeeOptions = {
 		title: "Top 5 technicians in terms of number of incidents resolved",
 		titleTextStyle: {
-			fontSize: 16,
-			color: "#FFFFFFF",
-			bold: false,
+			fontSize: 13,
+			color: "#000",
+			bold: true,
 			italic: false,
 			fontName: "Sans-Serif"
 		},
 		hAxis: {
 			title: "Employee names",
 			textStyle: {
-				fontSize: 14,
-				color: "#FFFFFFF",
-				bold: false,
+				fontSize: 13,
+				color: "#FFFFFF",
+				bold: true,
 				italic: false,
 				fontName: "Sans-Serif"
 			},
 			titleTextStyle: {
-				fontSize: 18,
-				color: "#FFFFFFF",
-				bold: false,
+				fontSize: 12,
+				color: "#000",
+				bold: true,
 				italic: false,
 				fontName: "Sans-Serif"
 			}
@@ -180,28 +189,39 @@ const ImageFunc = () => {
 		vAxis: {
 			title: "No. of Incidents Resolved",
 			textStyle: {
-				fontSize: 14,
-				color: "#FFFFFFF",
+				fontSize: 12,
+				color: "#000",
 				bold: false,
 				italic: false,
 				fontName: "Sans-Serif"
 			},
 			titleTextStyle: {
-				fontSize: 18,
-				color: "#FFFFFFF",
-				bold: false,
+				fontSize: 12,
+				color: "#000",
+				bold: true,
 				italic: false,
 				fontName: "Sans-Serif"
 			}
 		},
-		chartArea: { left: 80, top: 50, width: "80%" },
+		backgroundColor:{
+			stroke:"#ccc",
+			strokeWidth:2
+		},
+		chartArea: { 
+			left: 80, 
+			top: 50, 
+			width: "80%",
+			backgroundColor:"#efefef"
+		},
 		legend: { position: 'none' }
 	};
 
 	let date = new Date()
 	let yr_month = date.toISOString().substring(0, 7)
 	return (
-		<div>
+		<div className="body-mrgn">
+			<h2><FaBuromobelexperte className="fa-style" /> Dashboard</h2>
+			<div className="row mt-5">
 			{picVisible &&
 				<img src={incidentpic} />
 			}
@@ -209,9 +229,9 @@ const ImageFunc = () => {
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-7">
-							<div class="row">
-								<div class="col-lg-2">Select Year:</div>
-								<div class="col-lg-9">
+							<div class="row mb-3">
+								<div class="col-lg-3">Select Year :</div>
+								<div class="col-lg-3 px-0">
 									<select
 										className="form-select"
 										name="year"
@@ -243,10 +263,19 @@ const ImageFunc = () => {
 						</div>
 
 						<div class="col-lg-5">
-							<div class="row">
+							<div class="row mb-3">
 								<div class="col-lg-4">Select Month:</div>
 								<div class="col-lg-6">
-									<input type="month" id="start" name="start" min="1900-01" value={yr_month} />
+									<input 
+										className="form-control" 
+										type="month" 
+										id="start" 
+										name="start" 
+										min="1900-01" 
+										onChange={(e) => {
+											console.log(e.target.value);
+										}}
+										defaultValue={yr_month} />
 								</div>
 							</div>
 							<Chart
@@ -272,7 +301,7 @@ const ImageFunc = () => {
 					</div>
 				</div>
 			}
-		</div>
+		</div></div>
 	);
 };
 export default ImageFunc;

@@ -112,6 +112,7 @@ class Incident(models.Model):
     services = models.JSONField(null=True, blank=True)
     productPurchaseDate = models.DateField(null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.PROTECT, null=True, blank=True)
+    completionDate =  models.DateField(null=True, blank=True)
 
     def __str__(self):
         return "Incident "+str(self.incidentId)

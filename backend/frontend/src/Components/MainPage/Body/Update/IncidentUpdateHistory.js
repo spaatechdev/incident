@@ -4,6 +4,7 @@ import { Table } from "react-bootstrap";
 import _ from "lodash";
 import "../../../../CSS/View.css";
 import dynamic_urls from "../../../../env";
+import { FaWeight } from "react-icons/fa";
 
 const IncidentUpdateHistoryFunc = (props) => {
 	const uniqueEmployeeID = (id) => {
@@ -41,8 +42,7 @@ const IncidentUpdateHistoryFunc = (props) => {
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<div
-						class="tableFixHeadd"
+					<div className="tableFixHead"
 						style={{ paddingLeft: 0, paddingRight: 0 }}
 					>
 						<Table

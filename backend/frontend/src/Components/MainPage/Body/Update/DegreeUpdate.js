@@ -11,7 +11,7 @@ const DegreeUpdateFunc = (props) => {
 		let JSONdata = {
 			name: e.target.name.value,
 		};
-		axios.put(dynamic_urls.SERVER_URL+dynamic_urls.degrees + props.degree.degreeId + "/", JSONdata, {
+		axios.put(dynamic_urls.SERVER_URL + dynamic_urls.degrees + props.degree.degreeId + "/", JSONdata, {
 			headers: {
 				Accept: "application/json",
 				"Content-Type": "application/json",
@@ -40,8 +40,8 @@ const DegreeUpdateFunc = (props) => {
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-				<Form onSubmit={handleSubmit} >
-					<Row>
+					<Form onSubmit={handleSubmit} >
+						<Row>
 							<Col sm={6}>
 								<Form.Group controlId="name">
 									<Form.Label>Name</Form.Label>
@@ -52,16 +52,18 @@ const DegreeUpdateFunc = (props) => {
 										defaultValue={props.degree.name}
 										placeholder=""
 									/>
-								</Form.Group> 
-								<br/>
+								</Form.Group>
+								<br />
+							</Col>
+							<div className="col-lg-12 text-end submit">
 								<Form.Group>
 									<p></p>
-									<Button variant="primary" type="submit">
+									<Button variant="primary" type="submit" onClick={props.onHide}>
 										Submit
 									</Button>
 								</Form.Group>
-							</Col>
-					</Row>
+							</div>
+						</Row>
 					</Form>
 				</Modal.Body>
 				{/* <Modal.Footer>

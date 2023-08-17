@@ -74,7 +74,7 @@ const SkillViewFunc = () => {
 	// let skills = ServicesFunc("skills/")
 	return (
 		<div className="body-mrgn">
-			<h2><FaFileAlt className="fa-style" /> Skill Details</h2>
+			<h2><FaFileAlt className="fa-style" /> Employee Skill Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
 			<Link to="/skills/add" className="link">
 					<div className="submit float-end" style={{ paddingLeft: 0, paddingRight: 0, position: "relative", bottom: "100%" }}>	

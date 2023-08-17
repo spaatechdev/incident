@@ -44,7 +44,7 @@ const SkillAddFunc = () => {
 								</Col>
 								<Col sm={12}>
 								<Form.Group>
-									<div className="pt-4 submit">
+									<div className="pt-4 submit text-end">
 									<Button variant="primary" type="submit">
 										Submit
 									</Button>

@@ -93,12 +93,14 @@ const CustomerUpdateFunc = (props) => {
 									/>
 								</Form.Group>
 								<br/>
+								<div className="col-lg-12 text-end submit">
 								<Form.Group>
 									<p></p>
 									<Button variant="primary" type="submit">
 										Submit
 									</Button>
 								</Form.Group>
+								</div>
 							</Col>
 					</Row>
 					</Form>

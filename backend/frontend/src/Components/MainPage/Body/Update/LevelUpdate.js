@@ -55,12 +55,7 @@ const LevelUpdateFunc = (props) => {
 									/>
 								</Form.Group>
 								<br/>
-								<Form.Group>
-									<p></p>
-									<Button variant="primary" type="submit">
-										Submit
-									</Button>
-								</Form.Group>
+								
 							</Col>
 							<Col sm={6}>
 							<Form.Group controlId="tat">
@@ -74,6 +69,14 @@ const LevelUpdateFunc = (props) => {
 									/>
 								</Form.Group> 
 							</Col>
+							<div className="col-lg-12 text-end submit">
+								<Form.Group>
+									<p></p>
+									<Button variant="primary" type="submit">
+										Submit
+									</Button>
+								</Form.Group>
+							</div>
 					</Row>
 					</Form>
 				</Modal.Body>

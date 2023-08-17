@@ -69,7 +69,7 @@ const Login = () => {
 					<div className="Auth-form-container">
 						<form className="Auth-form" onSubmit={submit}>
 							<div className="Auth-form-content">
-								<h3 className="Auth-form-title" align="center">
+								<h3 className="Auth-form-title">
 									Log In
 								</h3>
 								<div className="form-group mt-3">

@@ -10,7 +10,7 @@ const IncidentStatusUpdateFunc = (props) => {
 		let JSONdata = {
 			name: e.target.name.value,
 		};
-		axios.put(dynamic_urls.SERVER_URL+dynamic_urls.incidentStatuses + props.incidentStatus.incidentStatusId + "/", JSONdata, {
+		axios.put(dynamic_urls.SERVER_URL + dynamic_urls.incidentStatuses + props.incidentStatus.incidentStatusId + "/", JSONdata, {
 			headers: {
 				Accept: "application/json",
 				"Content-Type": "application/json",
@@ -39,8 +39,8 @@ const IncidentStatusUpdateFunc = (props) => {
 					</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-				<Form onSubmit={handleSubmit} >
-					<Row>
+					<Form onSubmit={handleSubmit} >
+						<Row>
 							<Col sm={6}>
 								<Form.Group controlId="name">
 									<Form.Label>Name</Form.Label>
@@ -51,16 +51,18 @@ const IncidentStatusUpdateFunc = (props) => {
 										defaultValue={props.incidentStatus.name}
 										placeholder=""
 									/>
-								</Form.Group> 
-								<br/>
+								</Form.Group>
+								<br />
+							</Col>
+							<div className="col-lg-12 text-end submit">
 								<Form.Group>
 									<p></p>
 									<Button variant="primary" type="submit" onClick={props.onHide}>
 										Submit
 									</Button>
 								</Form.Group>
-							</Col>
-					</Row>
+							</div>
+						</Row>
 					</Form>
 				</Modal.Body>
 				{/* <Modal.Footer>

@@ -205,6 +205,7 @@ const EmployeeUpdateFunc = (props) => {
 									</select>
 								</Form.Group>
 								<br />
+								<div className="col-lg-12 text-end submit">
 								<Form.Group>
 									<p></p>
 									<Button
@@ -214,6 +215,7 @@ const EmployeeUpdateFunc = (props) => {
 										Submit
 									</Button>
 								</Form.Group>
+								</div>
 							</Col>
 						</Row>
 					</Form>

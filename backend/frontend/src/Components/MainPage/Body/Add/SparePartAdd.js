@@ -77,7 +77,7 @@ const SparePartAddFunc = () => {
 								</Col>
 							<Col sm={12}>
 								<Form.Group>
-									<div class="pt-4 submit">
+									<div class="pt-4 submit text-end">
 									<Button variant="primary" type="submit">
 										Submit
 									</Button>

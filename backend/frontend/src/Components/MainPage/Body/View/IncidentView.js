@@ -147,10 +147,10 @@ const IncidentViewFunc = () => {
 				{/* <p id="before-table"></p> */}
 
 				<Link to="/incidents/add" className="link">
-					<div className="submit float-end" style={{ paddingLeft: 0, paddingRight: 0, position: "relative", bottom: "100%" }}>	
-					<Button variant="primary" type="submit" className="float-end">
-						Add Incident
-					</Button>
+					<div className="submit float-end" style={{ paddingLeft: 0, paddingRight: 0, position: "relative", bottom: "100%" }}>
+						<Button variant="primary" type="submit" className="float-end">
+							Add Incident
+						</Button>
 					</div>
 				</Link>
 				<div
@@ -309,6 +309,7 @@ const IncidentViewFunc = () => {
 											<td>
 												<Button
 													className="mr-2"
+													variant="success"
 													onClick={(event) =>
 														handleUpdate(event, stu)
 													}

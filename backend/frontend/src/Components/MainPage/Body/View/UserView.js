@@ -52,7 +52,7 @@ const UserViewFunc = ({ callback }) => {
 				},
 			}).then(
 				(result) => {
-					alert("Successfully deleted");			
+					alert("User Successfully deleted");			
 					handleDeleteState();
 				},
 				(error) => {

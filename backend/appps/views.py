@@ -230,7 +230,6 @@ class IncidentView(viewsets.ModelViewSet):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def update(self, request, *args, **kwargs):
-        # try:
         data = json.loads(request.body)
         pk = self.kwargs['pk']
 

@@ -13,7 +13,7 @@ const UserViewFunc = ({ callback }) => {
 	const [editModalShow, setEditModalShow] = useState(false);
 	const [editEmployee, setEditEmployee] = useState([]);
 	const [isDeleted, setIsDeleted] = useState(0);
-
+	
 
 
 	useEffect(() => {
@@ -45,7 +45,6 @@ const UserViewFunc = ({ callback }) => {
 	const handleDelete = (e, id) => {
 		if (window.confirm("Are you sure ?")) {
 			e.preventDefault();
-			handleDeleteState();
 			axios.delete(dynamic_urls.SERVER_URL+dynamic_urls.users + id + "/", {
 				headers: {
 					Accept: "application/json",
@@ -53,7 +52,8 @@ const UserViewFunc = ({ callback }) => {
 				},
 			}).then(
 				(result) => {
-					alert("Successfully deleted");
+					alert("Successfully deleted");			
+					handleDeleteState();
 				},
 				(error) => {
 					alert("Failed to Delete");
@@ -98,7 +98,7 @@ const UserViewFunc = ({ callback }) => {
 									<td>{stu.email}</td>
 									<td>{stu.username}</td>
 									<td>
-										<Button className="mr-2" variant="danger" onClick={event => handleDelete(event, stu.employeeId)}>
+										<Button className="mr-2" variant="danger" onClick={event => handleDelete(event, stu.id)}>
 											<RiDeleteBin5Line />
 										</Button>
 									</td>

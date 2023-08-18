@@ -28,7 +28,7 @@ const SignUpFunc = () => {
 			})
 			.then(
 				(result) => {
-					window.location.href = "/login";
+					window.location.href = "/";
 				},
 				(error) => {
 					alert("Enter the details correctly");

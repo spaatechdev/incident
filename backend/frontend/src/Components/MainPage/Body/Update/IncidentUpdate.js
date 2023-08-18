@@ -858,7 +858,7 @@ const TableRowsSparePart = ({ rowsData, deleteTableRows, handleChange, sparePart
 		{	max=sparePartInfo.totalQuantity
 			threshold=sparePartInfo.reorderLevel}
 		if(max<threshold)
-			alert(sparePartInfo.name," stock is less than reorder level")
+			alert(sparePartInfo.name+" stock is less than reorder level")
 			
 		let filteredSparePart=spareParts.filter(x=>
 			!((Object.values(sparePartsUsed).filter(y=>

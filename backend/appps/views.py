@@ -11,7 +11,7 @@ from .serializers import EmployeeSerializer, CustomerSerializer, IncidentSeriali
     SkillSerializer, IncidentStatusSerializer, SparePartSerializer, DegreeSerializer, ProductSerializer,\
     ServiceSerializer
 import json
-from datetime import datetime, timedelta, date
+from datetime import datetime, timedelta    
 from django.utils.dateparse import parse_date
 from django.conf import settings
 from django.core.mail import send_mail
@@ -262,9 +262,9 @@ class IncidentView(viewsets.ModelViewSet):
         incident.expectedCompletionTime = (current_date_time + timedelta(hours=level.tat)).time().replace(microsecond=0)
         if data['amount']:
             incident.amount = data['amount']
-        if data['incidentStatus']==0:
-            incident.completionDate=date.today()
-        else:                  
+        if data['incidentStatus']==2:
+            incident.completionDate=incident.expectedCompletionDate
+        else:                
             incident.completionDate=None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         incident.save()
         for i in data['spareParts']:

@@ -261,6 +261,8 @@ class IncidentView(viewsets.ModelViewSet):
         incident.expectedCompletionTime = (current_date_time + timedelta(hours=level.tat)).time().replace(microsecond=0)
         if data['amount']:
             incident.amount = data['amount']
+        else:
+            incident.amount = None
         if data['incidentStatus']==2:
             incident.completionDate=incident.expectedCompletionDate
         else:                

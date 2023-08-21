@@ -39,7 +39,7 @@ const IncidentUpdateFunc = (props) => {
 	const [severity, setSeverity] = useState(0);
 	const [complexity, setComplexity] = useState(0)
 	const [level, setLevel] = useState(Object.keys(props.incident).length?props.incident.level:{});
-
+	
 	useEffect(() => {
 		if(props.show){
 			setSeverity(props.incident.severity.degreeId)
@@ -389,7 +389,7 @@ const IncidentUpdateFunc = (props) => {
 				" AM"
 			);
 	};
-
+	
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		props.onHide();
@@ -1042,7 +1042,7 @@ const TableRowsService = ({ rowsData, deleteTableRows, handleChange, services, s
 						value=""
 						selected
 					>
-						Select Spare part
+						Select Service
 					</option>
 					{filteredService &&
 						filteredService.map(
@@ -1073,7 +1073,7 @@ const TableRowsService = ({ rowsData, deleteTableRows, handleChange, services, s
 						value=""
 						selected
 					>
-						Select Spare part
+						Select Service
 					</option>
 					{filteredService &&
 						filteredService.map(

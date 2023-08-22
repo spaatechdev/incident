@@ -6,7 +6,7 @@ import { format } from "date-fns";
 import { FaTabletAlt } from "react-icons/fa";
 import EstimatedDateTimeFunc from "./EstimatedDateTime";
 import dynamic_urls from "../../../../env";
-
+import { Link } from 'react-router-dom'
 const IncidentAddFunc = () => {
 	const [employees, setEmployees] = useState([]);
 	const [employeesErr, setEmployeesErr] = useState(0);
@@ -201,9 +201,12 @@ const IncidentAddFunc = () => {
 						<Form.Group controlId="customer">
 							<Form.Label>Customer</Form.Label>
 							<span> </span>
-							<Button variant="success" style={buttonStyle} href="/customers/add">
-								+
-							</Button>	
+							<Link to="/customers/add" className="link">
+								<Button variant="success" style={buttonStyle} >
+									+
+								</Button>	
+							</Link>
+							
 							<select
 								className="form-select"
 								name="customer"

@@ -193,8 +193,8 @@ DATE_INPUT_FORMATS = [
 ]
 
 # Application definition
-APP_LOG_FILENAME = os.path.join(BASE_DIR, 'log/app.log')
-ERROR_LOG_FILENAME = os.path.join(BASE_DIR, 'log/error.log')
+APP_LOG_FILENAME = os.path.join(BASE_DIR, 'backend/log/app.log')
+ERROR_LOG_FILENAME = os.path.join(BASE_DIR, 'backend/log/error.log')
 
 LOGGING = {
     'version': 1,

@@ -7,6 +7,7 @@ import dynamic_urls from "../../../../env";
 import { FaWeight } from "react-icons/fa";
 
 const IncidentUpdateHistoryFunc = (props) => {
+	// console.log(props.edit)
 	const uniqueEmployeeID = (id) => {
 		if (id < 10) return `EMP-100${id}`;
 		else return `EMP-10${id}`;
@@ -89,24 +90,24 @@ const IncidentUpdateHistoryFunc = (props) => {
 													stu.customer.customerId
 												)}
 											</td>
-											<td>{stu.employee.name}</td>
+											<td>{stu.employee?stu.employee.name:null}</td>
 											<td>
-												{uniqueEmployeeID(
+												{stu.employee && uniqueEmployeeID(
 													stu.employee.employeeId
 												)}
 											</td>
 											<td style={{ textAlign: "center" }}>
-												{stu.severity.name}
+												{stu.severity?stu.severity.name:null}
 											</td>
 											<td style={{ textAlign: "center" }}>
-												{stu.complexity.name}
+												{stu.complexity?stu.complexity.name:null}
 											</td>
-											<td>{stu.level.name}</td>
-											<td>{stu.level.tat}</td>
+											<td>{stu.level?stu.level.name:null}</td>
+											<td>{stu.level?stu.level.tat:null}</td>
 											<td>{stu.incidentRemark}</td>
 											<td>{stu.incidentStatus.name}</td>
-											<td>{date(stu.expectedCompletionDate)}</td>
-											<td>{time(stu.expectedCompletionTime)}</td>
+											<td>{stu.expectedCompletionDate?date(stu.expectedCompletionDate):null}</td>
+											<td>{stu.expectedCompletionTime?time(stu.expectedCompletionTime):null}</td>	
 											<td>{stu.amount}</td>
 										</tr>
 									))}

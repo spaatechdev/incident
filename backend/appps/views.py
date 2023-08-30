@@ -11,8 +11,14 @@ from .serializers import EmployeeSerializer, CustomerSerializer, IncidentSeriali
     SkillSerializer, IncidentStatusSerializer, SparePartSerializer, DegreeSerializer, ProductSerializer,\
     ServiceSerializer
 import json
+import calendar
 from datetime import datetime, timedelta    
 from django.utils.dateparse import parse_date
+from rest_framework.decorators import api_view
+from django.http import HttpResponse
+import imaplib
+import email
+from email.header import decode_header
 from django.conf import settings
 from django.core.mail import send_mail
 # import pywhatkit
@@ -232,7 +238,29 @@ class IncidentView(viewsets.ModelViewSet):
     def update(self, request, *args, **kwargs):
         data = json.loads(request.body)
         pk = self.kwargs['pk']
-
+        oldSP = Incident.objects.get(incidentId=pk).spareParts
+        newSP = data['spareParts']
+        for i in oldSP:
+            flag = False
+            sp = SparePart.objects.get(sparePartId=i['sparePart'])
+            for j in newSP:
+                if j['sparePart'] == i['sparePart']:
+                    sp.totalQuantity += i['quantity'] - j['quantity']
+                    flag = True
+                    break
+            if flag == False:
+                sp.totalQuantity += i['quantity']
+            sp.save()
+        for i in newSP:
+            flag = False
+            sp = SparePart.objects.get(sparePartId=i['sparePart'])
+            for j in oldSP:
+                if j['sparePart'] == i['sparePart']:
+                    flag = True
+                    break
+            if flag == False:
+                sp.totalQuantity -= i['quantity']
+            sp.save()
         employee = Employee.objects.get(employeeId=data['employeeId'])
         incidentstatus = IncidentStatus.objects.get(incidentStatusId=data['incidentStatus'])
         severity = Degree.objects.get(degreeId=data['severity'])
@@ -247,6 +275,7 @@ class IncidentView(viewsets.ModelViewSet):
             levelid = 2
         level = Level.objects.get(levelId=levelid)
         incident = Incident.objects.get(incidentId=pk)
+        incident.incidentDescription = data['incidentDescription']
         incident.employee = employee
         incident.incidentRemark = data['incidentRemark']
         incident.incidentStatus = incidentstatus
@@ -263,16 +292,108 @@ class IncidentView(viewsets.ModelViewSet):
             incident.amount = data['amount']
         else:
             incident.amount = None
-        if data['incidentStatus']==2:
-            incident.completionDate=incident.expectedCompletionDate
+        if data['incidentStatus'] == 2:
+            incident.completionDate = incident.expectedCompletionDate
         else:                
-            incident.completionDate=None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            incident.completionDate = None
         incident.save()
-        for i in data['spareParts']:
-            sparepart = SparePart.objects.get(sparePartId=i['sparePart'])
-            sparepart.totalQuantity -= i['quantity']
-            sparepart.save()    
         return Response(status=status.HTTP_200_OK)
 
         # except Exception as e:
         #     return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def RegisteredVsResolved(request):
+    year = request.data['year']
+    month = request.data['month']
+    x = {
+        calendar.month_name[month-2]: {"registered": 10, "resolved": 4},
+        calendar.month_name[month-1]: {"registered": 7, "resolved": 5},
+        calendar.month_name[month]: {"registered": 4, "resolved": 3},
+    }
+    if request.method == 'POST':
+        return Response(x)
+
+    return Response("Failure")
+
+
+@api_view(['GET'])
+def readEmail(request):
+    # account credentials
+    username = "andleebmiraanyt@gmail.com"
+    password = "gaskdxgijwrctxtx"
+    # use your email provider's IMAP server, you can look for your provider's IMAP server on Google
+    # or check this page: https://www.systoolsgroup.com/imap/
+    # for office 365, it's this:
+    imap_server = "imap.gmail.com"
+
+    # Connect to the IMAP server
+    imap = imaplib.IMAP4_SSL(imap_server)
+    imap.login(username, password)
+
+    # Select the mailbox you want to access (e.g., "inbox")
+    status, email_ids = imap.select('inbox')
+
+    # Search for unseen emails (UNSEEN indicates unread emails)
+    status, email_ids = imap.search(None, 'UNSEEN')
+
+    # Retrieve and print email details
+    for email_id in email_ids[0].split():
+        status, msg_data = imap.fetch(email_id, '(RFC822)')
+        msg = email.message_from_bytes(msg_data[0][1])
+
+        subject, encoding = decode_header(msg['Subject'])[0]
+        if isinstance(subject, bytes):
+            subject = subject.decode(encoding or 'utf-8')
+
+        from_, encoding = decode_header(msg.get('From'))[0]
+        if isinstance(from_, bytes):
+            from_ = from_.decode(encoding or 'utf-8')
+        print(from_)
+        # date, encoding = decode_header(msg.get('Date'))[0]
+        # if isinstance(date, bytes):
+        #     date = date.decode(encoding or 'utf-8')
+        # d = date.split(" ")
+        # dt = datetime(int(d[3]), datetime.strptime(d[2], '%b').month, int(d[1])).date()
+
+        if msg.is_multipart():
+            for part in msg.walk():
+                content_type = part.get_content_type()
+                content_disposition = str(part.get("Content-Disposition"))
+
+                try:
+                    body = part.get_payload(decode=True).decode()
+                except:
+                    pass
+
+                if content_type == "text/plain" and "attachment" not in content_disposition:
+                    print(body)
+
+        else:
+            content_type = msg.get_content_type()
+            body = msg.get_payload(decode=True).decode()
+            if content_type == "text/plain":
+                print(body)
+
+        senderEmail = from_[from_.index('<') + 1:from_.index('>')]
+        if not Customer.objects.filter(email__exact=senderEmail).exists():
+            Customer.objects.create(
+                name=from_[:from_.index('<')-1],
+                email=senderEmail
+            )
+        Incident.objects.create(
+            customIncidentId="INC" + (
+                str(Incident.objects.last().incidentId + 1) if (Incident.objects.all().count()) != 0 else "1").zfill(4),
+            customer=Customer.objects.get(email=senderEmail),
+            incidentDate=datetime.now().date(),
+            incidentTime=datetime.now().time().replace(microsecond=0),
+            incidentStatus=IncidentStatus.objects.get(incidentStatusId=1),
+            editHistory=[],
+            spareParts=[],
+            services=[],
+        )
+
+    # Logout and close the connection
+    imap.logout()
+    return HttpResponse('Email Reading Successfully')

@@ -21,7 +21,7 @@ const CustomerViewFunc = () => {
 		(async () => {
 			try {
 				const response = await axios.get(
-					dynamic_urls.SERVER_URL+dynamic_urls.customers,
+					dynamic_urls.SERVER_URL + dynamic_urls.customers,
 					{
 						headers: {
 							"Content-Type": "application/json",
@@ -53,7 +53,7 @@ const CustomerViewFunc = () => {
 			e.preventDefault();
 			handleDeleteState();
 			axios
-				.delete(dynamic_urls.SERVER_URL+dynamic_urls.customers + customerId + "/", {
+				.delete(dynamic_urls.SERVER_URL + dynamic_urls.customers + customerId + "/", {
 					headers: {
 						Accept: "application/json",
 						"Content-Type": "application/json",
@@ -76,11 +76,11 @@ const CustomerViewFunc = () => {
 		<div className="body-mrgn">
 			<h2><FaFileAlt className="fa-style" /> Customer Details</h2>
 			<div className="row side-row" style={{ padding: 15 }}>
-			<Link to="/customers/add" className="link">
-					<div className="submit float-end" style={{ paddingLeft: 0, paddingRight: 0, position: "relative", bottom: "100%" }}>	
-					<Button variant="primary" type="submit" className="float-end">
-						Add Customer
-					</Button>
+				<Link to="/customers/add" className="link">
+					<div className="submit float-end" style={{ paddingLeft: 0, paddingRight: 0, position: "relative", bottom: "100%" }}>
+						<Button variant="primary" type="submit" className="float-end">
+							Add Customer
+						</Button>
 					</div>
 				</Link>
 				<div

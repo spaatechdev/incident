@@ -58,14 +58,14 @@ function App() {
 			</Routes>
 			} */}
 			<div>
-				<div class="container-fluid px-0">
+				<div className="container-fluid px-0">
 					<HeaderFunc isAuth={isAuth}/>
 				</div>
 				{isAuth ?
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-lg-2 px-0 sidenav-bg"><SidebarFunc /></div>
-							<div class="col-lg-10">
+					<div className="container-fluid">
+						<div className="row">
+							<div className="col-lg-2 px-0 sidenav-bg"><SidebarFunc /></div>
+							<div className="col-lg-10">
 								<Routes>
 									<Route path="/" element={<BodyFunc comp="Image"/>} />
 									<Route path="/login" element={<Navigate to="/" />} />
@@ -143,10 +143,10 @@ function App() {
 							<Route path="/degrees/view" element={<LoginFunc />} />
 						</Routes>
 					</div>}
-				{/* <div class="container-fluid">
-					<div class="row">
-						<div class="col-lg-2 px-0"><SidebarFunc /></div>
-						<div class="col-lg-10">
+				{/* <div className="container-fluid">
+					<div className="row">
+						<div className="col-lg-2 px-0"><SidebarFunc /></div>
+						<div className="col-lg-10">
 							<Routes>
 								<Route path="/" element={isAuth ? <ImageFunc /> : <LoginFunc />} />
 								<Route path="/login" element={isAuth ? <Navigate to="/" /> : <LoginFunc />} />
@@ -186,7 +186,7 @@ function App() {
 						</div>
 					</div>
 				</div> */}
-				<div class="container-fluid px-0 footer-bg">
+				<div className="container-fluid px-0 footer-bg">
 				©2023 Copyright Incident Management System. All Rights Reserved
 				</div>
 			</div>

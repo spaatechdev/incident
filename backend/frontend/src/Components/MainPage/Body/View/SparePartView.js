@@ -69,7 +69,6 @@ const SparePartViewFunc = () => {
 				);
 		}
 	};
-	
 	let EditModalClose = () => setEditModalShow(false);
 	// let spareParts = ServicesFunc(dynamic_urls.spareParts)
 	return (
@@ -97,7 +96,7 @@ const SparePartViewFunc = () => {
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>Name</th>
+								<th>Spare part name</th>
 								<th>Total Quantity</th>
 								<th>Reorder Level</th>
 								<th style={{textAlign:"center"}}>Price</th>

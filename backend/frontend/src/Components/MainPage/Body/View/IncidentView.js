@@ -58,7 +58,7 @@ const IncidentViewFunc = () => {
 				setEditHistoryModalShow(true);
 				setEditHistory(stu.editHistory);
 				//Action to be performed after holding down mouse
-			}, 3000)
+			}, 2000)
 		} //Change 1000 to number of milliseconds required for mouse hold
 	};
 
@@ -138,7 +138,6 @@ const IncidentViewFunc = () => {
 	let EditHistoryModalClose = () => setEditHistoryModalShow(false);
 
 	let userEmail = localStorage.getItem("user_email");
-
 	return (
 		<div className="body-mrgn">
 			<h2><FaFileAlt className="fa-style" /> Incident Details</h2>
@@ -209,25 +208,26 @@ const IncidentViewFunc = () => {
 													stu.customer.customerId
 												)}
 											</td>
-											<td>{stu.product.name}</td>
-											<td>{stu.employee.name}</td>
+											<td>{stu.product?stu.product.name:null}</td>
+											<td>{stu.employee?stu.employee.name:null}</td>
 											<td>
-												{uniqueEmployeeID(
+												{stu.employee?
+												uniqueEmployeeID(
 													stu.employee.employeeId
-												)}
+												):null}
 											</td>
 											<td style={{ textAlign: "center" }}>
-												{stu.severity.name}
+												{stu.severity?stu.severity.name:null}
 											</td>
 											<td style={{ textAlign: "center" }}>
-												{stu.complexity.name}
+												{stu.complexity?stu.complexity.name:null}
 											</td>
-											<td>{stu.level.name}</td>
+											<td>{stu.level?stu.level.name:null}</td>
 											{/* <td>{stu.level.tat}</td> */}
 											<td>{stu.incidentRemark}</td>
 											<td>{stu.incidentStatus.name}</td>
-											<td>{date(stu.expectedCompletionDate)}</td>
-											<td>{time(stu.expectedCompletionTime)}</td>
+											<td>{stu.expectedCompletionDate?date(stu.expectedCompletionDate):null}</td>
+											<td>{stu.expectedCompletionTime?time(stu.expectedCompletionTime):null}</td>
 											<td>{stu.amount ? `₹${stu.amount}` : null}</td>
 											<td width="110rem">
 												{isSuperuser && (
@@ -268,7 +268,7 @@ const IncidentViewFunc = () => {
 												></IncidentUpdateHistoryFunc>
 											</td>
 										</tr>
-									) : stu.employee.email === userEmail ? (
+									) : stu.employee && stu.employee.email === userEmail ? (
 										<tr
 											key={stu.incidentId}
 											onMouseDown={(event) =>
@@ -280,31 +280,31 @@ const IncidentViewFunc = () => {
 											<td>{stu.incidentDescription}</td>
 											<td>{date(stu.incidentDate)}</td>
 											<td>{time(stu.incidentTime)}</td>
-											<td>{stu.customer.name}</td>
+											<td>{stu.customer?stu.customer.name:null}</td>
 											<td>
-												{uniqueCustomerID(
+												{stu.customer && uniqueCustomerID(
 													stu.customer.customerId
 												)}
 											</td>
-											<td>{stu.product.name}</td>
-											<td>{stu.employee.name}</td>
+											<td>{stu.product?stu.product.name:null}</td>
+											<td>{stu.employee?stu.employee.name:null}</td>
 											<td>
-												{uniqueEmployeeID(
+												{stu.employee && uniqueEmployeeID(
 													stu.employee.employeeId
 												)}
 											</td>
 											<td style={{ textAlign: "center" }}>
-												{stu.severity.name}
+												{stu.severity?stu.severity.name:null}
 											</td>
 											<td style={{ textAlign: "center" }}>
-												{stu.complexity.name}
+												{stu.complexity?stu.complexity.name:null}
 											</td>
-											<td>{stu.level.name}</td>
+											<td>{stu.level?stu.level.name:null}</td>
 											{/* <td>{stu.level.tat}</td> */}
 											<td>{stu.incidentRemark}</td>
 											<td>{stu.incidentStatus.name}</td>
-											<td>{date(stu.expectedCompletionDate)}</td>
-											<td>{time(stu.expectedCompletionTime)}</td>
+											<td>{stu.expectedCompletionDate?date(stu.expectedCompletionDate):null}</td>
+											<td>{stu.expectedCompletionTime?time(stu.expectedCompletionTime):null}</td>
 											<td>{stu.amount ? `₹${stu.amount}` : null}</td>
 											<td>
 												<Button

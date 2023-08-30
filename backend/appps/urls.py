@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import EmployeeView, CustomerView, IncidentView, UserView, LogoutView, Superuser, SkillView, \
-    LevelView, IncidentStatusView, DegreeView, SparePartView, ProductView, ServiceView
-from . import views
+from .views import EmployeeView, CustomerView, IncidentView, UserView, LogoutView,\
+    Superuser, SkillView, LevelView, IncidentStatusView, DegreeView, SparePartView,\
+    ProductView, ServiceView, RegisteredVsResolved, readEmail
 from rest_framework import routers
 from django.urls import path
 
@@ -31,5 +31,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view()),
     path('superuser/<str:pk>/', include(router2.urls)),
     # path("sendmail/", views.sendmail, name='sendmail'),
+    path("registeredVsResolved/", RegisteredVsResolved, name='registeredVsResolved'),
+    path("readEmail/", readEmail, name='registeredVsResolved'),
 ]
 urlpatterns += router.urls

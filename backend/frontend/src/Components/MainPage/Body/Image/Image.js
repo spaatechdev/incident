@@ -9,29 +9,31 @@ import { FaBuromobelexperte } from "react-icons/fa";
 
 const ImageFunc = () => {
 	const [picVisible, setPicVisible] = useState(false)
-	const [year, setYear] = useState(new Date().getFullYear())
-	const [incidents, setIncidents] = useState([]);
+	const [incidentResolutionYear, setIncidentResolutionYear] = useState(new Date().getFullYear())
+	const [incidentResolutionMonth, setIncidentResolutionMonth] = useState(new Date().getMonth()+1)
 	const [incidentsErr, setIncidentsErr] = useState(0);
-	
+	const[registeredVsResolvedData, setRegisteredVsResolvedData]=useState()
+	const[incidentData, setIncidentData]=useState()
 	useEffect(() => {
-		(async () => {
-			try {
-				const response = await axios.get(
-					dynamic_urls.SERVER_URL+dynamic_urls.incidents,
-					{
-						headers: {
-							"Content-Type": "application/json",
-						},
-					}
-				);
-				if (response.name === "AxiosError")
-					setIncidentsErr(incidentsErr + 1);
-				else setIncidents(response.data);
-			} catch (e) {
-				console.log("not auth");
+		let JSONdata = {
+			year: incidentResolutionYear,
+			month: incidentResolutionMonth,
+		};
+		axios.post(dynamic_urls.SERVER_URL+dynamic_urls.registeredVsResolved, JSONdata, {
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+		}).then(
+			(result) => {
+				setRegisteredVsResolvedData(result.data)
+			},
+			(error) => {
+				console.log("Failure");
 			}
-		})();
-	}, [incidentsErr]);
+		);
+	}, [incidentResolutionYear, incidentResolutionMonth]);
+	console.log(registeredVsResolvedData)
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setPicVisible(false)
@@ -39,16 +41,48 @@ const ImageFunc = () => {
 		return () => clearTimeout(timer);
 	}, [])
 
-	const years = Array.from({ length: 2100 - 1900 + 1 }, (_, i) => 1900 + i)
+	const currentYear = new Date().getFullYear()
+	const years = Array.from({ length: currentYear - 1900 + 1 }, (_, i) => 1900 + i)
 	const months = ["January", "February", "March", "April", "May", "June",
 		"July", "August", "September", "October", "November", "December"];
+	const currentMonth = months[new Date().getMonth()]
 
-	const IncidentData = [
-		["Month", "Incidents Registered", "Incidents resolved"],
-		[months[0], 10, 5],
-		[months[1], 20, 9],
-		[months[2], 15, 10],
-	];
+	// const IncidentData = [
+	// 	["Month", "Incidents Registered", "Incidents resolved"],
+	// 	[
+	// 		months.at(incidentResolutionMonth-3), 
+	// 		registeredVsResolvedData[months.at(incidentResolutionMonth-3)].registered,
+	// 		registeredVsResolvedData[months.at(incidentResolutionMonth-3)].resolved
+	// 	],
+	// 	[months.at(incidentResolutionMonth-2), 20, 9],
+	// 	[months.at(incidentResolutionMonth-1), 15, 10],
+	// ];
+
+	useEffect(() => {
+		if(registeredVsResolvedData){
+			setIncidentData(
+				[
+					["Month", "Incidents Registered", "Incidents resolved"],
+					[
+						months.at(incidentResolutionMonth-3), 
+						registeredVsResolvedData[months.at(incidentResolutionMonth-3)].registered,
+						registeredVsResolvedData[months.at(incidentResolutionMonth-3)].resolved
+					],
+					[
+						months.at(incidentResolutionMonth-2), 
+						registeredVsResolvedData[months.at(incidentResolutionMonth-2)].registered,
+						registeredVsResolvedData[months.at(incidentResolutionMonth-2)].resolved
+					],
+					[
+						months.at(incidentResolutionMonth-1), 
+						registeredVsResolvedData[months.at(incidentResolutionMonth-1)].registered,
+						registeredVsResolvedData[months.at(incidentResolutionMonth-1)].resolved
+					],
+				]
+			)
+		}
+	}, [registeredVsResolvedData])
+
 	var IncidentOptions = {
 		title: "Incidents registered vs Incidents resolved month-wise",
 		titleTextStyle: {
@@ -219,19 +253,19 @@ const ImageFunc = () => {
 				<img src={incidentpic} />
 			}
 			{!picVisible &&
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-7">
-							<div class="row mb-3">
-								<div class="col-lg-3">Select Year :</div>
-								<div class="col-lg-3 px-0">
+				<div className="container">
+					<div className="row">
+						<div className="col-lg-7">
+							<div className="row mb-3">
+								<div className="col-lg-2" style={{fontSize:15}}>Select Year:</div>
+								<div className="col-lg-3 px-0">
 									<select
 										className="form-select"
-										name="year"
+										name="incidentResolutionYear"
 										aria-label="Default select example"
-										defaultValue={year}
+										defaultValue={incidentResolutionYear}
 										onChange={(e) => {
-											setYear(Number(e.target.value));
+											setIncidentResolutionYear(Number(e.target.value));
 										}}
 									>
 										{years.map((num) => (
@@ -244,6 +278,50 @@ const ImageFunc = () => {
 										))}
 									</select>
 								</div>
+								<div className="col-lg-1"></div>
+								<div className="col-lg-2" style={{fontSize:15, paddingLeft:0,paddingRight:0}}>
+									Select Month:
+								</div>
+								<div className="col-lg-3 px-0">
+									<select
+										className="form-select"
+										name="incidentResolutionMonth"
+										aria-label="Default select example"
+										onChange={(e) => {
+											setIncidentResolutionMonth(months.indexOf(e.target.value)+1);
+										}}
+									>
+										{incidentResolutionYear==currentYear?(
+											months.slice(0,new Date().getMonth()+1).map(mnth=>(
+												mnth==months[incidentResolutionMonth-1]?(
+													<option
+                										value={mnth}
+														key={months.indexOf(mnth)}
+														selected
+													>
+														{mnth}
+													</option>
+												) : (
+													<option
+                										value={mnth}
+														key={months.indexOf(mnth)}
+													>
+														{mnth}
+													</option>
+												)
+											))
+										) : (
+											months.map((mnth) => (
+												<option
+													value={mnth}
+													key={months.indexOf(mnth)}
+												>
+													{mnth}
+												</option>
+											))
+										)}
+									</select>
+								</div>
 							</div>
 
 
@@ -251,14 +329,14 @@ const ImageFunc = () => {
 							<Chart
 								options={IncidentOptions}
 								chartType="ColumnChart"
-								data={IncidentData}
+								data={incidentData}
 							/>
 						</div>
 
-						<div class="col-lg-5">
-							<div class="row mb-3">
-								<div class="col-lg-4">Select Month:</div>
-								<div class="col-lg-6">
+						<div className="col-lg-5">
+							<div className="row mb-3">
+								<div className="col-lg-4">Select Month:</div>
+								<div className="col-lg-6">
 									<input 
 										className="form-control" 
 										type="month" 
@@ -279,7 +357,7 @@ const ImageFunc = () => {
 							// height={"400px"}
 							/>
 						</div>
-						<div class="col my-5">
+						<div className="col my-5">
 							<Chart
 								options={EmployeeOptions}
 								chartType="ColumnChart"
@@ -288,7 +366,7 @@ const ImageFunc = () => {
 								data={EmployeeData}
 							/>
 						</div>
-						<div class="col my-5">Column-4</div>
+						<div className="col my-5">Column-4</div>
 					</div>
 				</div>
 			}

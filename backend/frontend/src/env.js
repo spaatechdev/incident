@@ -12,7 +12,8 @@ const dynamic_urls = {
     products: "api/products/",
     employees: "api/employees/",
     customers: "api/customers/",
-    incidents: "api/incidents/"
+    incidents: "api/incidents/",
+    registeredVsResolved: "api/registeredVsResolved/",
 }
 
 export default dynamic_urls

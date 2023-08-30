@@ -98,7 +98,7 @@ const ProductViewFunc = () => {
 								<th>ID</th>
 								<th>Product Name</th>
 								<th>Model number</th>
-								<th>Warranry Period(in years)</th>
+								<th>Warranty Period(in years)</th>
 								<th>Action</th>
 							</tr>
 						</thead>

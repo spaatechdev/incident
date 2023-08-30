@@ -44,7 +44,7 @@ def readEmail(request):
         #     date = date.decode(encoding or 'utf-8')
         # d = date.split(" ")
         # dt = datetime(int(d[3]), datetime.strptime(d[2], '%b').month, int(d[1])).date()
-
+        body = None
         if msg.is_multipart():
             for part in msg.walk():
                 content_type = part.get_content_type()
@@ -77,6 +77,7 @@ def readEmail(request):
             incidentDate=datetime.now().date(),
             incidentTime=datetime.now().time().replace(microsecond=0),
             incidentStatus=IncidentStatus.objects.get(incidentStatusId=1),
+            incidentDescription=body,
             editHistory=[],
             spareParts=[],
             services=[],

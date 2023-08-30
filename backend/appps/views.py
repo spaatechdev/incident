@@ -351,12 +351,13 @@ def readEmail(request):
         if isinstance(from_, bytes):
             from_ = from_.decode(encoding or 'utf-8')
         print(from_)
+
         # date, encoding = decode_header(msg.get('Date'))[0]
         # if isinstance(date, bytes):
         #     date = date.decode(encoding or 'utf-8')
         # d = date.split(" ")
         # dt = datetime(int(d[3]), datetime.strptime(d[2], '%b').month, int(d[1])).date()
-
+        body=None
         if msg.is_multipart():
             for part in msg.walk():
                 content_type = part.get_content_type()
@@ -389,6 +390,7 @@ def readEmail(request):
             incidentDate=datetime.now().date(),
             incidentTime=datetime.now().time().replace(microsecond=0),
             incidentStatus=IncidentStatus.objects.get(incidentStatusId=1),
+            incidentDescription=body,
             editHistory=[],
             spareParts=[],
             services=[],

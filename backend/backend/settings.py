@@ -94,28 +94,28 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
-    # 'default': {
-    #     'ENGINE': 'mysql.connector.django',
-    #     'NAME': 'spaatech_incident',
-    #     'OPTIONS': {
-    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-    #     },
-    #     'USER': 'SPAATech',
-    #     'PASSWORD': 'SPAATech@502',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306',
-    # },
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'incident',
+        'NAME': 'spaatech_incident',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'USER': 'SPAATech',
+        'PASSWORD': 'SPAATech@502',
         'HOST': 'localhost',
         'PORT': '3306',
-    }
+    },
+    # 'default': {
+    #     'ENGINE': 'mysql.connector.django',
+    #     'NAME': 'incident',
+    #     'OPTIONS': {
+    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    #     },
+    #     'USER': 'root',
+    #     'PASSWORD': 'root',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    # }
 }
 
 

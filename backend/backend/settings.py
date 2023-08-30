@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -93,28 +94,28 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
-    # 'default': {
-    #     'ENGINE': 'mysql.connector.django',
-    #     'NAME': 'spaatech_incident',
-    #     'OPTIONS': {
-    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-    #     },
-    #     'USER': 'SPAATech',
-    #     'PASSWORD': 'SPAATech@502',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306',
-    # },
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'incident',
+        'NAME': 'spaatech_incident',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'USER': 'SPAATech',
+        'PASSWORD': 'SPAATech@502',
         'HOST': 'localhost',
         'PORT': '3306',
-    }
+    },
+    # 'default': {
+    #     'ENGINE': 'mysql.connector.django',
+    #     'NAME': 'incident',
+    #     'OPTIONS': {
+    #         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    #     },
+    #     'USER': 'root',
+    #     'PASSWORD': 'root',
+    #     'HOST': 'localhost',
+    #     'PORT': '3306',
+    # }
 }
 
 
@@ -189,4 +190,47 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DATE_INPUT_FORMATS = [
     "%d/%m/%Y",
+]
+
+# Application definition
+APP_LOG_FILENAME = os.path.join(BASE_DIR, 'log/app.log')
+ERROR_LOG_FILENAME = os.path.join(BASE_DIR, 'log/error.log')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(name) -12s %(levelname) -8s %(message)s'
+        },
+        'file': {
+            'format': '%(asctime)s %(name) -12s %(levelname) -8s %(message)s'
+        }
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'file',
+            'filename': APP_LOG_FILENAME
+        }
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+    'loggers': {
+        '': {
+            'level': 'DEBUG',
+            'handlers': ['console', 'file'],
+        },
+    },
+}
+
+CRONJOBS = [
+    ('*/5 * * * *', 'backend.cron.readEmail')
 ]

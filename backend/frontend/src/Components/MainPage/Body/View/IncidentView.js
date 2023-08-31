@@ -198,6 +198,7 @@ const IncidentViewFunc = () => {
 											onMouseUp={handleMouseUp}
 										>
 											<td>{stu.customIncidentId}</td>
+											{/* <td><div dangerouslySetInnerHTML={{__html: stu.incidentDescription}}></div></td> */}
 											<td>{stu.incidentDescription}</td>
 											<td>{date(stu.incidentDate)}</td>
 											<td>{time(stu.incidentTime)}</td>

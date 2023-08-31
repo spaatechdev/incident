@@ -342,7 +342,7 @@ def readEmail(request):
     status, email_ids = imap.select('inbox')
 
     # Search for unseen emails (UNSEEN indicates unread emails)
-    status, email_ids = imap.search(None, 'UNSEEN')
+    status, email_ids = imap.search(None, 'ALL')
 
     # Retrieve and print email details
     for email_id in email_ids[0].split():
@@ -369,25 +369,25 @@ def readEmail(request):
                 content_disposition = str(part.get("Content-Disposition"))
 
                 try:
-                    body = part.get_payload(decode=True).decode()
+                    body = remove_html_tags(part.get_payload(decode=True).decode())
                 except:
                     pass
 
-                if content_type == "text/plain" and "attachment" not in content_disposition:
-                    body = remove_html_tags(body)
-                    # print("body1")
-                    # print(body)
+                # if content_type == "text/plain" and "attachment" not in content_disposition:
+                #     body = remove_html_tags(body)
+                #     print("body1")
+                #     print(body)
                     # print(remove_html_tags(body))
 
         else:
             content_type = msg.get_content_type()
-            body = msg.get_payload(decode=True).decode()
-            if content_type == "text/plain":
-                body = remove_html_tags(body)
-                # print("body2")
-                # print(body)
+            body = remove_html_tags(msg.get_payload(decode=True).decode())
+            # if content_type == "text/plain":
+            #     body = remove_html_tags(body)
+            #     print("body2")
+            #     print(body)
                 # print(remove_html_tags(body))
-
+        print(body)
         senderEmail = from_[from_.index('<') + 1:from_.index('>')]
         if not Customer.objects.filter(email__exact=senderEmail).exists():
             Customer.objects.create(

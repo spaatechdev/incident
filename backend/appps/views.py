@@ -387,7 +387,7 @@ def readEmail(request):
             #     print("body2")
             #     print(body)
                 # print(remove_html_tags(body))
-        print(body)
+        # print(body)
         senderEmail = from_[from_.index('<') + 1:from_.index('>')]
         if not Customer.objects.filter(email__exact=senderEmail).exists():
             Customer.objects.create(

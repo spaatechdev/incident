@@ -1,11 +1,11 @@
 from datetime import datetime, timedelta
 from backend.appps.models import Incident, Customer, IncidentStatus
 import imaplib
+from backend.appps.views import remove_html_tags
 import email
 from email.header import decode_header
 import logging
 logger = logging.getLogger(__name__)
-
 
 def readEmail(request):
     # account credentials
@@ -56,13 +56,19 @@ def readEmail(request):
                     pass
 
                 if content_type == "text/plain" and "attachment" not in content_disposition:
-                    print(body)
+                    body = remove_html_tags(body)
+                    # print("body1")
+                    # print(body)
+                    # print(remove_html_tags(body))
 
         else:
             content_type = msg.get_content_type()
             body = msg.get_payload(decode=True).decode()
             if content_type == "text/plain":
-                print(body)
+                body = remove_html_tags(body)
+                # print("body2")
+                # print(body)
+                # print(remove_html_tags(body))
 
         senderEmail = from_[from_.index('<') + 1:from_.index('>')]
         if not Customer.objects.filter(email__exact=senderEmail).exists():

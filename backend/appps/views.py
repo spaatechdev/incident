@@ -1,3 +1,4 @@
+import re
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.views import APIView
@@ -318,6 +319,11 @@ def RegisteredVsResolved(request):
     return Response("Failure")
 
 
+def remove_html_tags(text):
+    """Remove html tags from a string"""
+    clean = re.compile('<.*?>')
+    return re.sub(clean, '', text)
+
 @api_view(['GET'])
 def readEmail(request):
     # account credentials
@@ -351,13 +357,12 @@ def readEmail(request):
         if isinstance(from_, bytes):
             from_ = from_.decode(encoding or 'utf-8')
         print(from_)
-
         # date, encoding = decode_header(msg.get('Date'))[0]
         # if isinstance(date, bytes):
         #     date = date.decode(encoding or 'utf-8')
         # d = date.split(" ")
         # dt = datetime(int(d[3]), datetime.strptime(d[2], '%b').month, int(d[1])).date()
-        body=None
+        body = None
         if msg.is_multipart():
             for part in msg.walk():
                 content_type = part.get_content_type()
@@ -369,13 +374,19 @@ def readEmail(request):
                     pass
 
                 if content_type == "text/plain" and "attachment" not in content_disposition:
-                    print(body)
+                    body = remove_html_tags(body)
+                    # print("body1")
+                    # print(body)
+                    # print(remove_html_tags(body))
 
         else:
             content_type = msg.get_content_type()
             body = msg.get_payload(decode=True).decode()
             if content_type == "text/plain":
-                print(body)
+                body = remove_html_tags(body)
+                # print("body2")
+                # print(body)
+                # print(remove_html_tags(body))
 
         senderEmail = from_[from_.index('<') + 1:from_.index('>')]
         if not Customer.objects.filter(email__exact=senderEmail).exists():

@@ -342,7 +342,7 @@ def readEmail(request):
     status, email_ids = imap.select('inbox')
 
     # Search for unseen emails (UNSEEN indicates unread emails)
-    status, email_ids = imap.search(None, 'ALL')
+    status, email_ids = imap.search(None, 'UNSEEN')
 
     # Retrieve and print email details
     for email_id in email_ids[0].split():
